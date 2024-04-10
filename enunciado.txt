@@ -1,0 +1,27 @@
+Nesta avaliação seu grupo deverá construir, na linguagem ou conjunto de linguagens
+escolhida por vocês uma aplicação Web/Stand-alone que tenha as seguintes
+características:
+- Front-end, definido pelo grupo e que suporte as funcionalidades exigidas;
+- Entrada de um grafo de forma definida pelo grupo.
+- O armazenamento do grafo deverá ser feito utilizando as técnicas que praticamos
+em sala, de armazenamento como matriz de adjacência OU lista de adjacência.
+Apresente no front-end o grafo armazenado em uma das duas formas.
+- A partir do grafo inserido, o aplicativo deverá implementar, obrigatoriamente, dois
+algoritmos de grafos, DFS e BFS. O usuário deverá escolher qual executar a partir de
+botões no front-end.
+- O resultado da aplicação dos algoritmos deverá ser apresentado para o usuário no
+front-ent, contendo TODOS os elementos importantes para verificação da correta
+execução do algoritmo. Não é necessária uma apresentação de resultados gráfica.
+- Por último, o front-end deverá apresentar um botão para finalização da aplicação.
+Esta deverá executar até que o usuário escolha este botão, permitindo até este
+momento a entrada de novos grafos e execução dos algoritmos.
+A pontuação será distribuída da seguinte forma:
+- 1,5 pontos para leitura, armazenamento e apresentação do grafo de entrada como
+matriz ou lista de adjacência.
+- 2,5 pontos para a execução e apresentação completa do resultado do DFS.
+- 2,5 pontos para a execução e apresentação completa do resultado do BFS.
+- 2,5 pontos para a execução e funcionalidade do front-end, de acordo com as
+instruções.
+- 1,0 pontos para a apresentação da aplicação em sala.
+
+entrega dia 14/04 e apresentação dia 16/04 
