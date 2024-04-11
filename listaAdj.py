@@ -59,6 +59,13 @@ class ListaAdjacencia:
                 for vizinho in self.listaAdjacencia.get(vertice, []):
                     if vizinho not in visitados:
                         fila.append(vizinho)
+    
+    
+    
+    
+    
+    
+    
                         
     #Auxilia o DFS
     def dfs_visit(self, vertice, visitados, arvore_dfs):
@@ -75,7 +82,7 @@ class ListaAdjacencia:
                 #Adiciona o vizinho como filho do vértice atual na árvore DFS e chama recursivamente dfs_visit
                 arvore_dfs[vertice].append(vizinho)
                 self.dfs_visit(vizinho, visitados, arvore_dfs)
-                        
+
     #Realiza O DFS              
     def busca_em_profundidade(self, vertice_inicial):
         #Cria o conjunto dos nos visitados 
@@ -86,6 +93,11 @@ class ListaAdjacencia:
         
         #Chama a função auxiliar dfs_visit para iniciar a busca em profundidade
         self.dfs_visit(vertice_inicial, visitados, arvore_dfs)
+        
+        #Verifica se ainda existem vértices não visitados
+        for vertice in self.listaAdjacencia.keys():
+            if vertice not in visitados:
+                self.dfs_visit(vertice, visitados, arvore_dfs)
 
         #Retorna a árvore DFS
         return arvore_dfs

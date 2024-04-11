@@ -1,5 +1,5 @@
 from listaAdj import ListaAdjacencia
-
+from listaAdjDirecionada import ListaAdjacenciaDirecionada
 
 if __name__ == "__main__":
     
@@ -17,7 +17,7 @@ if __name__ == "__main__":
     g1.insere_um_par(4, 3)
 
     # Outra maneira de inserir múltiplos pares usando insere_multiplos_pares
-    g2.insere_multiplos_pares([("A", "B"), ("A", "E"), ("B", "C"), ("B", "E"), ("C", "F"), ('E', "F"), ("F", "I"), ("D", "H"), ("D", "G"), ("G", "H")])
+    g2.insere_multiplos_pares([("A", "B"), ("A", "E"), ("B", "C"), ("B", "E"), ("C", "F"), ("E", "F"), ("F", "I"), ("D", "H"), ("D", "G"), ("G", "H")])
 
     # Chamar a função imprimir_lista para verificar a lista de adjacência
     g1.imprimir_lista()
@@ -30,3 +30,24 @@ if __name__ == "__main__":
     
     arvore_dfs2 = g2.busca_em_profundidade("A")
     g2.imprimir_arvore(arvore_dfs2, "A")
+
+    g3 = ListaAdjacenciaDirecionada()
+    g4 = ListaAdjacenciaDirecionada()
+    g5 = ListaAdjacencia()
+    
+    g3.insere_um_par(1, 2)
+    g3.insere_um_par(1, 5)
+    g3.insere_um_par(2, 5)
+    g3.insere_um_par(2, 3)
+    g3.insere_um_par(2, 4)
+    g3.insere_um_par(5, 4)
+    g3.insere_um_par(4, 3)
+
+
+    g4.insere_multiplos_pares([("A", "B"), ("A", "F"), ("B", "C"), ("B", "E"), ("C", "D"), ("E", "D"), ("E", "G"), ("D", "H"), ("D", "B"), ("G", "F"), ("H", "G"), ("F", "G"), ("F", "E")])
+    g3.imprimir_lista()
+    g4.imprimir_lista()
+
+    print("Busca de profundidade")
+    
+    g4.dfs("A")
