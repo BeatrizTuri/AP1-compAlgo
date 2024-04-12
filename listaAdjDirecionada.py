@@ -43,27 +43,41 @@ class ListaAdjacenciaDirecionada:
                 for vizinho in vizinhos_ordenados:
                     if vizinho not in visitados:
                         fila.append(vizinho)
+        return visitados
 
     #Realiza a busca em profundidade (DFS)
-    def busca_em_profundidade_direcionada(self, vertice_inicial, visitado=None):
+    def busca_em_profundidade_direcionada(self, vertice_inicial, visitado=None, pre_visita=None, pos_visita=None, contador=None):
         
         #lista de visitados começa zerada
         if visitado is None:
-            #cria lista em estilo set
+            #cria lista em estilo set e os dict de pre e pos visit
             visitado = set()
-            #se a lista estiver zerada, o vertice inicial vai ser adicionado dentro da lista
+            pre_visita = {}
+            pos_visita = {}
+            contador = {'contador': 1}
+
+            #se a lista estiver zerada, o vertice inicial vai ser adicionado dentro da lista vazia
         visitado.add(vertice_inicial)
+        #atribui o contador ao vertice atual como pre visit
+        pre_visita[vertice_inicial] = contador['contador']
+        contador['contador'] += 1
         
-        #vai printar o vertice inicial no momento
-        print(vertice_inicial,contador)
+        #vai printar o pre visit do vertice
+        print(f"Pré-Visita de {vertice_inicial}: {pre_visita[vertice_inicial]}")
 
         if vertice_inicial in self.listaAdjacenciaDirecionada:
             #faz uma iteração sobre os adjacentes ao verice inicial
             for vizinho in self.listaAdjacenciaDirecionada[vertice_inicial]:
                 #reinicia a função dfs utilizando vizinho como se fosse o vertice inicial
                 if vizinho not in visitado:   
-                    self.dfs(vizinho, visitado)
-                
+                    self.busca_em_profundidade_direcionada(vizinho, visitado, pre_visita, pos_visita, contador)
+        
+        #atribui o contador ao vertice atual como pos visit
+        pos_visita[vertice_inicial] = contador['contador']
+        contador['contador'] += 1
 
-        return visitado
+        #vai printar o pos visit do vertice
+        print(f"Pós-Visita de {vertice_inicial}: {pos_visita[vertice_inicial]}")
+
+        return visitado, pre_visita, pos_visita
     

@@ -53,4 +53,4 @@ if __name__ == "__main__":
 
     # print("Busca de profundidade")
     
-    g4.busca_em_largura_direcionada()
+    g4.busca_em_profundidade_direcionada("A")
