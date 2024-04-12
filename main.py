@@ -11,7 +11,7 @@ if __name__ == "__main__":
 
 
     # Outra maneira de inserir múltiplos pares usando insere_multiplos_pares
-    g2.insere_listaAdjacencia([("A", "B"), ("A", "E"), ("B", "C"), ("B", "E"), ("C", "F"), ("E", "F"), ("F", "I")])
+    g3.insere_listaAdjacencia([("A", "B"), ("A", "E"), ("B", "C"), ("B", "E"), ("C", "F"), ("E", "F"), ("F", "I")])
     g3.insere_subgrafo(1, [[("D", "H"), ("D", "G"), ("G", "H")]])
     # Chamar a função imprimir_lista para verificar a lista de adjacência
     # g1.imprimir_lista()
@@ -19,11 +19,11 @@ if __name__ == "__main__":
     g2.imprimir_lista()
     g3.imprimir_lista()
     
-    g2.busca_em_largura()
+    #g2.busca_em_largura()
     g3.busca_em_largura()
     
-    g2.busca_em_profundidade()
-    g3.busca_em_profundidade()  
+    #g2.busca_em_profundidade()
+    print(g3.busca_em_profundidade())
     
     # g1.busca_em_largura(1)
     # g2.busca_em_largura("A")
@@ -47,10 +47,10 @@ if __name__ == "__main__":
     # g3.insere_um_par(4, 3)
 
 
-    g4.insere_listaAdjacenciaDirecionada([("A", "B"), ("A", "F"), ("B", "C"), ("B", "E"), ("C", "D"), ("E", "D"), ("E", "G"), ("D", "H"), ("D", "B"), ("G", "F"), ("H", "G"), ("F", "G"), ("F", "E")])
+    #g4.insere_listaAdjacenciaDirecionada([("A", "B"), ("A", "F"), ("B", "C"), ("B", "E"), ("C", "D"), ("E", "D"), ("E", "G"), ("D", "H"), ("D", "B"), ("G", "F"), ("H", "G"), ("F", "G"), ("F", "E")])
     # g3.imprimir_lista()
-    g4.imprimir_lista_direcionada()
+    #g4.imprimir_lista_direcionada()
 
     # print("Busca de profundidade")
     
-    g4.busca_em_profundidade_direcionada("A")
+    #g4.busca_em_profundidade_direcionada("A")

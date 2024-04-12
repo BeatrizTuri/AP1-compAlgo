@@ -72,10 +72,14 @@ class ListaAdjacencia:
                         fila.append(vizinho)
       
     #Auxilia o DFS
-    def dfs_visit(self, vertice, visitados, arvore_dfs):
+    def dfs_visit(self, vertice, visitados, arvore_dfs, pre_visita, pos_visita, contador):
         #Adiciona o vértice atual aos visitados
         visitados.add(vertice)
-        
+        pre_visita[vertice] = contador['contador']
+        contador['contador'] += 1
+
+        print(f"Pré-Visita de {vertice}: {pre_visita[vertice]}")
+
         #Inicializa a lista de vértices filhos do vértice atual na árvore DFS
         arvore_dfs[vertice] = []
         
@@ -85,7 +89,16 @@ class ListaAdjacencia:
             if vizinho not in visitados:
                 #Adiciona o vizinho como filho do vértice atual na árvore DFS e chama recursivamente dfs_visit
                 arvore_dfs[vertice].append(vizinho)
-                self.dfs_visit(vizinho, visitados, arvore_dfs)
+                self.dfs_visit(vizinho, visitados, arvore_dfs,pre_visita, pos_visita, contador)
+        
+        #atribui o contador ao vertice atual como pos visit
+        pos_visita[vertice] = contador['contador']
+        contador['contador'] += 1
+
+        #vai printar o pos visit do vertice
+        print(f"Pós-Visita de {vertice}: {pos_visita[vertice]}")
+
+        return pre_visita, pos_visita
 
     #Método para imprimir a árvore DFS
     def imprimir_arvore(self, arvore_dfs, vertice, nivel=0):
@@ -104,6 +117,9 @@ class ListaAdjacencia:
         
         #Cria o conjunto dos nos visitados 
         visitados = set()
+        pre_visita = {}
+        pos_visita = {}
+        contador = {'contador': 1}
         #Cria um dicionario para armazenar a árvore gerada 
         arvore_dfs = {}
         
@@ -111,7 +127,7 @@ class ListaAdjacencia:
         for vertice in self.listaAdjacencia.keys():
             #Se o vértice não foi visitado, chama o método dfs_visit
             if vertice not in visitados:
-                self.dfs_visit(vertice, visitados, arvore_dfs)
+                self.dfs_visit(vertice, visitados, arvore_dfs,pre_visita, pos_visita,contador)
 
         #Retorna a árvore DFS
-        return self.imprimir_arvore(arvore_dfs, next(iter(self.listaAdjacencia)))
+        return pre_visita, pos_visita
