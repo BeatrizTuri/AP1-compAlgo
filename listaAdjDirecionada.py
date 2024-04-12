@@ -17,12 +17,12 @@ class ListaAdjacenciaDirecionada:
         for v1, v2 in lista_de_pares:
             self.insere_um_par(v1,v2)
     
-    def imprimir_lista(self):
+    def imprimir_lista_direcionada(self):
         for vertice, adjacentes in self.listaAdjacenciaDirecionada.items():
             print(f"{vertice}: {adjacentes}")
 
-    #BFS
-    def busca_em_largura(self, vertice_inicial):
+    #Realiza a busca em largura (BFS)
+    def busca_em_largura_direcionada(self, vertice_inicial):
         visitados = set()
         fila = deque([vertice_inicial])
 
@@ -37,8 +37,8 @@ class ListaAdjacenciaDirecionada:
                     if vizinho not in visitados:
                         fila.append(vizinho)
 
-   
-    def dfs(self, vertice_inicial, visitado=None):
+    #Realiza a busca em profundidade (DFS)
+    def busca_em_profundidade_direcionada(self, vertice_inicial, visitado=None):
         
         #lista de visitados começa zerada
         if visitado is None:
