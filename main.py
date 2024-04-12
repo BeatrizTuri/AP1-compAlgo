@@ -35,7 +35,7 @@ if __name__ == "__main__":
     # g2.imprimir_arvore(arvore_dfs2, "A")
 
     # g3 = ListaAdjacenciaDirecionada()
-    # g4 = ListaAdjacenciaDirecionada()
+    g4 = ListaAdjacenciaDirecionada()
     # g5 = ListaAdjacencia()
     
     # g3.insere_um_par(1, 2)
@@ -47,10 +47,10 @@ if __name__ == "__main__":
     # g3.insere_um_par(4, 3)
 
 
-    # g4.insere_multiplos_pares([("A", "B"), ("A", "F"), ("B", "C"), ("B", "E"), ("C", "D"), ("E", "D"), ("E", "G"), ("D", "H"), ("D", "B"), ("G", "F"), ("H", "G"), ("F", "G"), ("F", "E")])
+    g4.insere_listaAdjacenciaDirecionada([("A", "B"), ("A", "F"), ("B", "C"), ("B", "E"), ("C", "D"), ("E", "D"), ("E", "G"), ("D", "H"), ("D", "B"), ("G", "F"), ("H", "G"), ("F", "G"), ("F", "E")])
     # g3.imprimir_lista()
-    # g4.imprimir_lista()
+    g4.imprimir_lista_direcionada()
 
     # print("Busca de profundidade")
     
-    # g4.busca_em_profundidade_direcionada("A")
+    g4.busca_em_largura_direcionada()

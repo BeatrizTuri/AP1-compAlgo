@@ -7,22 +7,28 @@ class ListaAdjacenciaDirecionada:
     #Método construtor 
     def __init__(self):
         self.listaAdjacenciaDirecionada = {}
-    
-    def insere_um_par(self, v1, v2):
-        if v1 not in self.listaAdjacenciaDirecionada:
-            self.listaAdjacenciaDirecionada[v1] = []
-        self.listaAdjacenciaDirecionada[v1].append(v2)
-    
-    def insere_multiplos_pares(self,lista_de_pares):
+
+    def insere_listaAdjacenciaDirecionada(self, lista_de_pares):
         for v1, v2 in lista_de_pares:
-            self.insere_um_par(v1,v2)
+            if v1 not in self.listaAdjacenciaDirecionada:
+                self.listaAdjacenciaDirecionada[v1] = [v2]
+            else:
+                self.listaAdjacenciaDirecionada[v1].append(v2)
+                self.listaAdjacenciaDirecionada[v1].sort()
+        
+        self.listaAdjacenciaDirecionada = {k: sorted(v) for k, v in sorted(self.listaAdjacenciaDirecionada.items())}
     
+    def insere_subgrafo(self, qtd, lista_de_subgrafo):
+        for subgrafo in lista_de_subgrafo[:qtd]:
+            self.insere_listaAdjacenciaDirecionada(subgrafo)
+
     def imprimir_lista_direcionada(self):
         for vertice, adjacentes in self.listaAdjacenciaDirecionada.items():
             print(f"{vertice}: {adjacentes}")
 
     #Realiza a busca em largura (BFS)
-    def busca_em_largura_direcionada(self, vertice_inicial):
+    def busca_em_largura_direcionada(self):
+        vertice_inicial = next(iter(self.listaAdjacenciaDirecionada))
         visitados = set()
         fila = deque([vertice_inicial])
 
@@ -32,8 +38,9 @@ class ListaAdjacenciaDirecionada:
             if vertice not in visitados:
                 print(vertice, end=' ')
                 visitados.add(vertice)
-                    
-                for vizinho in self.listaAdjacenciaDirecionada.get(vertice, []):
+                
+                vizinhos_ordenados = sorted(self.listaAdjacenciaDirecionada.get(vertice, []))
+                for vizinho in vizinhos_ordenados:
                     if vizinho not in visitados:
                         fila.append(vizinho)
 
