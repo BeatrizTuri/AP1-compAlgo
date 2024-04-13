@@ -4,6 +4,18 @@ body {
     padding: 0;
     background-color: #f4f4f4;
   }
+
+  header {
+    background-color: #177e11; /* Cor de fundo verde */
+    color: #fff; /* Cor do texto branco */
+    padding: 20px; /* Espaçamento interno */
+    text-align: center; /* Centralizar o texto */
+}
+
+header h1 {
+  margin: 0; /* Remover margem padrão do h1 */
+  color: #fff; /* Cor do texto branco */
+}
   
   .container {
     max-width: 800px;
@@ -14,36 +26,32 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   }
   
-  h1 {
-    font-size: 24px;
-    margin-bottom: 20px;
-    color: #333;
-  }
+
   
   label {
     font-size: 16px;
     color: #333;
   }
   
-  textarea {
-    width: 100%;
+  #listaInput {
+    width: 80%; /* Largura da textarea (80% do container) */
+    height: 10vh; /* Altura inicial da textarea (50% da altura da viewport) */
     padding: 10px;
-    margin-bottom: 20px;
+    border-radius: 5px;
     border: 1px solid #ccc;
-    border-radius: 4px;
-    resize: vertical;
-  }
+    resize: vertical; /* Permitir redimensionamento vertical */
+    box-sizing: border-box; /* Incluir padding e borda na largura */
+}
   
   button {
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: #007bff;
-    
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
+    background-color: #177e11; /* Cor de fundo verde */
+    color: #fff; /* Cor do texto branco */
+    padding: 10px 20px; /* Espaçamento interno */
+    margin-right: 10px; /* Margem à direita para separar os botões */
+    border: none; /* Remover a borda */
+    cursor: pointer; /* Alterar cursor para indicar interatividade */
+    border-radius: 20px; /* Arredondar as bordas */
+}
   
   button:hover {
     background-color: #0056b3;

@@ -17,44 +17,52 @@
 <textarea id="listaInput" rows="4" cols="50"></textarea><br>
 <button onclick="inserirGrafo()">Inserir grafo</button>
 <button onclick="inserirSubgrafo()">Inserir subgrafo</button>
+<button onclick="exibirListaAdjacencia()">Exibir lista de adjacência</button>
+
+
+<!-- <button id="inserirGrafoBtn" onclick="inserirGrafo()">Inserir grafo</button>
+<button id="inserirSubgrafoBtn" onclick="inserirSubgrafo()">Inserir subgrafo</button> -->
+
 
 <div id="listaOutput"></div>
 
 <script>
 function inserirGrafo() {
-    var input = document.getElementById("listaInput").value;
-    var listaPares = parseInput(input);
+    var listaPares = document.getElementById("listaInput").value;
 
-    pywebPython.insere_listaAdjacenciaDirecionada(listaPares);
+    // Enviar a lista de pares para o servidor Flask
+    enviarListaPares(listaPares, "/insere_lista_direcionada");
 }
 
 function inserirSubgrafo() {
-    var input = document.getElementById("listaInput").value;
-    var listaPares = parseInput(input);
+    var listaPares = document.getElementById("listaInput").value;
 
-    pywebPython.insere_subgrafo_direcionado(1, listaPares);
+    // Enviar a lista de pares para o servidor Flask
+    enviarListaPares(listaPares, "/insere_subgrafo_direcionado");
 }
 
-function parseInput(input) {
-    // Remova qualquer caractere que não seja letra, número ou vírgula
-    input = input.replace(/[^\w\s,]/g, '');
-    
-    // Remova espaços extras e quebras de linha
-    input = input.trim().replace(/\s+/g, '');
-
-    // Separe os pares usando a vírgula como delimitador
-    var pairs = input.split(',');
-    
-    // Crie uma lista de pares no formato desejado
-    var listaPares = [];
-    for (var i = 0; i < pairs.length; i++) {
-        var pair = pairs[i].split('');
-        if (pair.length === 2) {
-            listaPares.push([pair[0], pair[1]]);
+function enviarListaPares(listaPares, rota) {
+    // Fazer uma solicitação AJAX para enviar a lista de pares para o servidor Flask
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", rota);
+    xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+    xhr.onload = function() {
+        if (xhr.status === 200) {
+            // Exibir a resposta do servidor (opcional)
+            document.getElementById("listaOutput").innerHTML = xhr.responseText;
+        } else {
+            console.error(xhr.statusText);
         }
-    }
-    
-    return listaPares;
+    };
+    xhr.onerror = function() {
+        console.error(xhr.statusText);
+    };
+    xhr.send(JSON.stringify({ listaPares: listaPares }));
+}
+
+function exibirListaAdjacencia() {
+        // Chamada à função Python para exibir a lista de adjacência
+        pywebPython.exibir_listaAdjacencia();
     }
     </script>
 

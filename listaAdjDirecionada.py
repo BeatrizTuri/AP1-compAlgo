@@ -21,7 +21,7 @@ class ListaAdjacenciaDirecionada:
         
         self.listaAdjacenciaDirecionada = {k: sorted(v) for k, v in sorted(self.listaAdjacenciaDirecionada.items())}
     
-    def insere_subgrafo(self, qtd, lista_de_subgrafo):
+    def insere_subgrafo_direcionado(self, qtd, lista_de_subgrafo):
         for subgrafo in lista_de_subgrafo[:qtd]:
             self.insere_listaAdjacenciaDirecionada(subgrafo)
 

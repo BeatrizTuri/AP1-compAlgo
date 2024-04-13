@@ -18,6 +18,22 @@ def listaDirecionada():
 @app.route('/NaoDirecionada')
 def listaNaoDirecionada():
     return flask.render_template('listaNaoDirecionada.html')
+
+@app.route('/BuscaEmLarguraDirecionada')
+def buscaEmLarguraDirecionada():
+    return flask.render_template('buscaEmLarguraDirecionada.html')
+
+@app.route('/BuscaEmLargura')
+def buscaEmLargura():
+    return flask.render_template('buscaEmLargura.html')
+
+@app.route('/BuscaEmProfundidadeDirecionada')
+def buscaEmProfundidadeDirecionada():
+    return flask.render_template('buscaEmProfundidadeDirecionada.html')
+
+@app.route('/BuscaEmProfundidade')
+def buscaEmProfundidade():
+    return flask.render_template('buscaEmProfundidade.html')
     
 
 if __name__ == "__main__":
@@ -79,3 +95,24 @@ if __name__ == "__main__":
     # print("Busca de profundidade")
     
     g4.busca_em_profundidade_direcionada()
+
+
+''' 
+chat gpt falou para colocar essas funções, mas nao tenho certeza pq ta usando jsonify
+'''
+
+#     from flask import request, jsonify
+
+# @app.route('/insere_lista_direcionada', methods=['POST'])
+# def insere_lista_direcionada():
+#     dados = request.json
+#     lista_pares = dados['listaPares']
+#     g4.insere_listaAdjacenciaDirecionada(lista_pares)
+#     return "Lista de adjacência direcionada inserida com sucesso!"
+
+# @app.route('/insere_subgrafo_direcionado', methods=['POST'])
+# def insere_subgrafo_direcionado():
+#     dados = request.json
+#     lista_pares = dados['listaPares']
+#     g4.insere_subgrafo_direcionado(1, lista_pares)
+#     return "Subgrafo direcionado inserido com sucesso!"

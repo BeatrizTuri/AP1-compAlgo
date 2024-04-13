@@ -33,14 +33,15 @@ header h1 {
     color: #333;
   }
   
-  textarea {
-    width: 100%;
+  #listaInput {
+    width: 80%; /* Largura da textarea (80% do container) */
+    height: 10vh; /* Altura inicial da textarea (50% da altura da viewport) */
     padding: 10px;
-    margin-bottom: 20px;
+    border-radius: 5px;
     border: 1px solid #ccc;
-    border-radius: 4px;
-    resize: vertical;
-  }
+    resize: vertical; /* Permitir redimensionamento vertical */
+    box-sizing: border-box; /* Incluir padding e borda na largura */
+}
   
   button {
     background-color: #177e11; /* Cor de fundo verde */
