@@ -5,7 +5,10 @@ from listaAdjDirecionada import ListaAdjacenciaDirecionada
 import flask
 
 app = flask.Flask(__name__)
-
+lad = ListaAdjacenciaDirecionada()
+la = ListaAdjacencia()
+sd = ListaAdjacenciaDirecionada()
+s = ListaAdjacencia()
 
 @app.route('/')
 def home():
@@ -19,21 +22,49 @@ def listaDirecionada():
 def listaNaoDirecionada():
     return flask.render_template('listaNaoDirecionada.html')
 
-@app.route('/BuscaEmLarguraDirecionada')
-def buscaEmLarguraDirecionada():
-    return flask.render_template('buscaEmLarguraDirecionada.html')
+@app.route('/insereListaDirecionada', methods=['POST'])
+def insereListaDirecionada():
+    lista_pares = flask.request.form.get("grafoInput")
+    lista_pares = [tuple(pair.strip().split(',')) for pair in lista_pares.split('\n') if len(pair.strip().split(',')) == 2]
+    lad.insere_listaAdjacenciaDirecionada(lista_pares)
+ 
+    return "Lista de adjacência direcionada inserida com sucesso!" 
 
-@app.route('/BuscaEmLargura')
-def buscaEmLargura():
-    return flask.render_template('buscaEmLargura.html')
+@app.route('/insereSubgrafoDirecionado', methods=['POST'])
+def insereSubgrafoDirecionado():
+  
+    dados = flask.request.form
+    qtd = dados.get("qtdInput")
+    lista_pares = dados.get("subgrafoInput")
+    lista_pares = [tuple(pair.strip().split(',')) for pair in lista_pares.split('\n') if len(pair.strip().split(',')) == 2] 
+    sd.insere_subgrafo_direcionado(qtd, lista_pares)
+    
+    return "Subgrafo direcionado inserido com sucesso!"
 
-@app.route('/BuscaEmProfundidadeDirecionada')
-def buscaEmProfundidadeDirecionada():
-    return flask.render_template('buscaEmProfundidadeDirecionada.html')
+@app.route('/exibeListaDirecionada', methods=['GET'])
+def exibeListaDirecionada():
+    grafo = lad.imprimir_lista_direcionada()
+    subgrafo = sd.imprimir_lista_direcionada()
+    
+    return flask.render_template('listaDirecionada.html', grafo=grafo, subgrafo=subgrafo)
 
-@app.route('/BuscaEmProfundidade')
-def buscaEmProfundidade():
-    return flask.render_template('buscaEmProfundidade.html')
+
+
+# @app.route('/BuscaEmLarguraDirecionada')
+# def buscaEmLarguraDirecionada():
+#     return flask.render_template('buscaEmLarguraDirecionada.html')
+
+# @app.route('/BuscaEmLargura')
+# def buscaEmLargura():
+#     return flask.render_template('buscaEmLargura.html')
+
+# @app.route('/BuscaEmProfundidadeDirecionada')
+# def buscaEmProfundidadeDirecionada():
+#     return flask.render_template('buscaEmProfundidadeDirecionada.html')
+
+# @app.route('/BuscaEmProfundidade')
+# def buscaEmProfundidade():
+#     return flask.render_template('buscaEmProfundidade.html')
     
 
 if __name__ == "__main__":
@@ -44,57 +75,57 @@ if __name__ == "__main__":
 
     app.run(debug=True)
     
-    # Criar uma instância da classe ListaAdjacencia
-    g1 = ListaAdjacencia()
-    g2 = ListaAdjacencia()
-    g3 = ListaAdjacencia()
+    # # Criar uma instância da classe ListaAdjacencia
+    # g1 = ListaAdjacencia()
+    # g2 = ListaAdjacencia()
+    # g3 = ListaAdjacencia()
 
 
-    # Outra maneira de inserir múltiplos pares usando insere_multiplos_pares
-    g2.insere_listaAdjacencia([("A", "B"), ("A", "E"), ("B", "C"), ("B", "E"), ("C", "F"), ("E", "F"), ("F", "I")])
-    g3.insere_subgrafo(1, [[("D", "H"), ("D", "G"), ("G", "H")]])
-    # Chamar a função imprimir_lista para verificar a lista de adjacência
-    # g1.imprimir_lista()
+    # # Outra maneira de inserir múltiplos pares usando insere_multiplos_pares
+    # g2.insere_listaAdjacencia([("A", "B"), ("A", "E"), ("B", "C"), ("B", "E"), ("C", "F"), ("E", "F"), ("F", "I")])
+    # g3.insere_subgrafo(1, [[("D", "H"), ("D", "G"), ("G", "H")]])
+    # # Chamar a função imprimir_lista para verificar a lista de adjacência
+    # # g1.imprimir_lista()
     
-    # g2.imprimir_lista()
-    # g3.imprimir_lista()
+    # # g2.imprimir_lista()
+    # # g3.imprimir_lista()
     
-    g2.busca_em_largura()
-    g3.busca_em_largura()
+    # g2.busca_em_largura()
+    # g3.busca_em_largura()
     
-    #g2.busca_em_profundidade()
-    # g3.busca_em_profundidade()
-    # g3.imprimir_dfs()
+    # #g2.busca_em_profundidade()
+    # # g3.busca_em_profundidade()
+    # # g3.imprimir_dfs()
     
-    # g1.busca_em_largura(1)
-    # g2.busca_em_largura("A")
+    # # g1.busca_em_largura(1)
+    # # g2.busca_em_largura("A")
     
-    # arvore_dfs= g1.busca_em_profundidade(1)
-    # g1.imprimir_arvore(arvore_dfs, 1)
+    # # arvore_dfs= g1.busca_em_profundidade(1)
+    # # g1.imprimir_arvore(arvore_dfs, 1)
     
-    # arvore_dfs2 = g2.busca_em_profundidade("A")
-    # g2.imprimir_arvore(arvore_dfs2, "A")
+    # # arvore_dfs2 = g2.busca_em_profundidade("A")
+    # # g2.imprimir_arvore(arvore_dfs2, "A")
 
-    # g3 = ListaAdjacenciaDirecionada()
-    g4 = ListaAdjacenciaDirecionada()
-    # g5 = ListaAdjacencia()
+    # # g3 = ListaAdjacenciaDirecionada()
+    # g4 = ListaAdjacenciaDirecionada()
+    # # g5 = ListaAdjacencia()
     
-    # g3.insere_um_par(1, 2)
-    # g3.insere_um_par(1, 5)
-    # g3.insere_um_par(2, 5)
-    # g3.insere_um_par(2, 3)
-    # g3.insere_um_par(2, 4)
-    # g3.insere_um_par(5, 4)
-    # g3.insere_um_par(4, 3)
+    # # g3.insere_um_par(1, 2)
+    # # g3.insere_um_par(1, 5)
+    # # g3.insere_um_par(2, 5)
+    # # g3.insere_um_par(2, 3)
+    # # g3.insere_um_par(2, 4)
+    # # g3.insere_um_par(5, 4)
+    # # g3.insere_um_par(4, 3)
 
 
-    #g4.insere_listaAdjacenciaDirecionada([("A", "B"), ("A", "F"), ("B", "C"), ("B", "E"), ("C", "D"), ("E", "D"), ("E", "G"), ("D", "H"), ("D", "B"), ("G", "F"), ("H", "G"), ("F", "G"), ("F", "E")])
-    # g3.imprimir_lista()
-    #g4.imprimir_lista_direcionada()
+    # #g4.insere_listaAdjacenciaDirecionada([("A", "B"), ("A", "F"), ("B", "C"), ("B", "E"), ("C", "D"), ("E", "D"), ("E", "G"), ("D", "H"), ("D", "B"), ("G", "F"), ("H", "G"), ("F", "G"), ("F", "E")])
+    # # g3.imprimir_lista()
+    # #g4.imprimir_lista_direcionada()
 
-    # print("Busca de profundidade")
+    # # print("Busca de profundidade")
     
-    g4.busca_em_profundidade_direcionada()
+    # g4.busca_em_profundidade_direcionada()
 
 
 ''' 

@@ -8,63 +8,46 @@
 </head>
 <body>
 
-  <header>
+<header>
     <h1>Grafos Direcionados</h1>
-  </header>
-  <div class = 'container'>
+</header>
+<div class="container">
 
-<label for="listaInput">Insira aqui o Grafo e seu Subgrafo (Caso exista):</label><br>
-<textarea id="listaInput" rows="4" cols="50"></textarea><br>
-<button onclick="inserirGrafo()">Inserir grafo</button>
-<button onclick="inserirSubgrafo()">Inserir subgrafo</button>
-<button onclick="exibirListaAdjacencia()">Exibir lista de adjacência</button>
+    <div>
+        <h2>Inserir Grafo Direcionado</h2>
+        <form action="/insereListaDirecionada" method="post">
+            <label for="grafoInput">Insira aqui o Grafo:</label><br>
+            <textarea id="grafoInput" name="grafoInput" rows="4" cols="50"></textarea><br>
+            <button type="submit">Inserir grafo</button>
+        </form>
+    </div>
 
+    <div>
+        <h2>Inserir Subgrafo Direcionado</h2>
+        <form action="/insereSubgrafoDirecionado" method="post">
+            <label for="subgrafoInput">Insira aqui o Subgrafo:</label><br>
+            <textarea id="subgrafoInput" name="subgrafoInput" rows="4" cols="50"></textarea><br>
+            <label for="qtdInput">Quantidade:</label>
+            <input type="text" id="qtdInput" name="qtdInput"><br>
+            <button type="submit">Inserir subgrafo</button>
+        </form>
+        <div id="subgrafoOutput"></div>
+    </div>
 
-<!-- <button id="inserirGrafoBtn" onclick="inserirGrafo()">Inserir grafo</button>
-<button id="inserirSubgrafoBtn" onclick="inserirSubgrafo()">Inserir subgrafo</button> -->
+    <div>
+        <form action="/exibeListaDirecionada" method="get">
+            <button type="submit">Exibir lista de adjacência</button>
+        </form>
+    </div>
 
-
-<div id="listaOutput"></div>
-
-<script>
-function inserirGrafo() {
-    var listaPares = document.getElementById("listaInput").value;
-
-    // Enviar a lista de pares para o servidor Flask
-    enviarListaPares(listaPares, "/insere_lista_direcionada");
-}
-
-function inserirSubgrafo() {
-    var listaPares = document.getElementById("listaInput").value;
-
-    // Enviar a lista de pares para o servidor Flask
-    enviarListaPares(listaPares, "/insere_subgrafo_direcionado");
-}
-
-function enviarListaPares(listaPares, rota) {
-    // Fazer uma solicitação AJAX para enviar a lista de pares para o servidor Flask
-    var xhr = new XMLHttpRequest();
-    xhr.open("POST", rota);
-    xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-    xhr.onload = function() {
-        if (xhr.status === 200) {
-            // Exibir a resposta do servidor (opcional)
-            document.getElementById("listaOutput").innerHTML = xhr.responseText;
-        } else {
-            console.error(xhr.statusText);
-        }
-    };
-    xhr.onerror = function() {
-        console.error(xhr.statusText);
-    };
-    xhr.send(JSON.stringify({ listaPares: listaPares }));
-}
-
-function exibirListaAdjacencia() {
-        // Chamada à função Python para exibir a lista de adjacência
-        pywebPython.exibir_listaAdjacencia();
-    }
-    </script>
+    <div>
+        <h2>Lista de Adjacência</h2>
+        <div id="listaOutput">
+        
+        </div>
+    </div>
+    
+</div>
 
 </body>
 </html>
