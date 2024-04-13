@@ -1,8 +1,32 @@
+import os
+import webbrowser
 from listaAdj import ListaAdjacencia
 from listaAdjDirecionada import ListaAdjacenciaDirecionada
 import flask
 
+app = flask.Flask(__name__)
+
+
+@app.route('/')
+def home():
+    return flask.render_template('home.html')
+    
+@app.route('/Direcionada')
+def listaDirecionada():
+    return flask.render_template('listaDirecionada.html')
+
+@app.route('/NaoDirecionada')
+def listaNaoDirecionada():
+    return flask.render_template('listaNaoDirecionada.html')
+    
+
 if __name__ == "__main__":
+    
+    #Iniciando o servidor
+    if not os.environ.get("WERKZEUG_RUN_MAIN"): #Executa apenas uma vez
+        webbrowser.open("http://127.0.0.1:5000")
+
+    app.run(debug=True)
     
     # Criar uma instância da classe ListaAdjacencia
     g1 = ListaAdjacencia()
@@ -11,19 +35,20 @@ if __name__ == "__main__":
 
 
     # Outra maneira de inserir múltiplos pares usando insere_multiplos_pares
-    g3.insere_listaAdjacencia([("A", "B"), ("A", "E"), ("B", "C"), ("B", "E"), ("C", "F"), ("E", "F"), ("F", "I")])
+    g2.insere_listaAdjacencia([("A", "B"), ("A", "E"), ("B", "C"), ("B", "E"), ("C", "F"), ("E", "F"), ("F", "I")])
     g3.insere_subgrafo(1, [[("D", "H"), ("D", "G"), ("G", "H")]])
     # Chamar a função imprimir_lista para verificar a lista de adjacência
     # g1.imprimir_lista()
     
-    g2.imprimir_lista()
-    g3.imprimir_lista()
+    # g2.imprimir_lista()
+    # g3.imprimir_lista()
     
-    #g2.busca_em_largura()
+    g2.busca_em_largura()
     g3.busca_em_largura()
     
     #g2.busca_em_profundidade()
-    print(g3.busca_em_profundidade())
+    # g3.busca_em_profundidade()
+    # g3.imprimir_dfs()
     
     # g1.busca_em_largura(1)
     # g2.busca_em_largura("A")
@@ -53,4 +78,4 @@ if __name__ == "__main__":
 
     # print("Busca de profundidade")
     
-    #g4.busca_em_profundidade_direcionada("A")
+    g4.busca_em_profundidade_direcionada()

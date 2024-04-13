@@ -13,6 +13,8 @@ Engenharia da Computação
 ## Matéria
 Complexidade de Algoritimos 
 
+## Instrução de compilação
+
 ## Padrão de Commit
 Utilizamos tipos de commit para padronizar as mensagens de commit neste projeto. A seguir, estão os tipos de commit a serem utilizados, juntamente com exemplos de sumários correspondentes:
 

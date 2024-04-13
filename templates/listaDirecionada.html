@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inserir Lista Direcionada</title>
+    <link rel="stylesheet" href="/static/styleListaDirecionada.css">
+</head>
+<body>
+
+  <header>
+    <h1>Grafos Direcionados</h1>
+  </header>
+  <div class = 'container'>
+
+<label for="listaInput">Insira aqui o Grafo e seu Subgrafo (Caso exista):</label><br>
+<textarea id="listaInput" rows="4" cols="50"></textarea><br>
+<button onclick="inserirGrafo()">Inserir grafo</button>
+<button onclick="inserirSubgrafo()">Inserir subgrafo</button>
+
+<div id="listaOutput"></div>
+
+<script>
+function inserirGrafo() {
+    var input = document.getElementById("listaInput").value;
+    var listaPares = parseInput(input);
+
+    pywebPython.insere_listaAdjacenciaDirecionada(listaPares);
+}
+
+function inserirSubgrafo() {
+    var input = document.getElementById("listaInput").value;
+    var listaPares = parseInput(input);
+
+    pywebPython.insere_subgrafo_direcionado(1, listaPares);
+}
+
+function parseInput(input) {
+    // Remova qualquer caractere que não seja letra, número ou vírgula
+    input = input.replace(/[^\w\s,]/g, '');
+    
+    // Remova espaços extras e quebras de linha
+    input = input.trim().replace(/\s+/g, '');
+
+    // Separe os pares usando a vírgula como delimitador
+    var pairs = input.split(',');
+    
+    // Crie uma lista de pares no formato desejado
+    var listaPares = [];
+    for (var i = 0; i < pairs.length; i++) {
+        var pair = pairs[i].split('');
+        if (pair.length === 2) {
+            listaPares.push([pair[0], pair[1]]);
+        }
+    }
+    
+    return listaPares;
+    }
+    </script>
+
+</body>
+</html>

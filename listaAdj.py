@@ -2,10 +2,13 @@ from collections import deque
 
 class ListaAdjacencia:
 
-    #Método construtor 
+    #Método construtor
     def __init__(self):
         self.listaAdjacencia = {}
-    
+        self.pre_visita = {}
+        self.pos_visita = {}
+
+
     #Método para inserir uma lista de pares
     def insere_listaAdjacencia(self, lista_de_pares):
         
@@ -62,7 +65,7 @@ class ListaAdjacencia:
                 #Adiciona o vértice aos visitados
                 visitados.add(vertice)
                 
-                # Ordena os vizinhos alfabeticamente e numericamente
+                #Ordena os vizinhos alfabeticamente e numericamente
                 vizinhos_ordenados = sorted(self.listaAdjacencia.get(vertice, []))             
                 #Adiciona os vértices vizinhos do vértice atual à fila
                 for vizinho in vizinhos_ordenados:
@@ -70,64 +73,53 @@ class ListaAdjacencia:
                     if vizinho not in visitados:
                         #Adiciona o vizinho à fila
                         fila.append(vizinho)
-      
-    #Auxilia o DFS
-    def dfs_visit(self, vertice, visitados, arvore_dfs, pre_visita, pos_visita, contador):
-        #Adiciona o vértice atual aos visitados
+
+    #Algoritmo que realiza a busca em profundidade (DFS)
+    def dfs_visit(self, vertice, visitados, arvore_dfs, contador):
+
+        #Adiciona o vértice inicial ao conjunto de vértices visitados
         visitados.add(vertice)
-        pre_visita[vertice] = contador['contador']
+
+        #Inicializa o atributo de pre-visita ao vértice atual
+        self.pre_visita[vertice] = contador['contador']
         contador['contador'] += 1
 
-        print(f"Pré-Visita de {vertice}: {pre_visita[vertice]}")
-
-        #Inicializa a lista de vértices filhos do vértice atual na árvore DFS
+        #Inicializa uma lista vazia no dicionário para armazenar os filhos do vértice atual
         arvore_dfs[vertice] = []
-        
-        #Explora os vértices vizinhos do vértice atual
+
+        #Itera sobre os vizinhos vértice atual
         for vizinho in self.listaAdjacencia.get(vertice, []):
-            
+            #Verifica se o vizinho não foi visitado
             if vizinho not in visitados:
-                #Adiciona o vizinho como filho do vértice atual na árvore DFS e chama recursivamente dfs_visit
+
+                #Adiciona vizinho na lista de filhos do vértice atual
                 arvore_dfs[vertice].append(vizinho)
-                self.dfs_visit(vizinho, visitados, arvore_dfs,pre_visita, pos_visita, contador)
-        
-        #atribui o contador ao vertice atual como pos visit
-        pos_visita[vertice] = contador['contador']
+                #Chamada RECURSIVA da função
+                self.dfs_visit(vizinho, visitados, arvore_dfs, contador)
+        #Inicializa o atributo pos-visit a partir do valor do contador atual
+        self.pos_visita[vertice] = contador['contador']
         contador['contador'] += 1
 
-        #vai printar o pos visit do vertice
-        print(f"Pós-Visita de {vertice}: {pos_visita[vertice]}")
-
-        return pre_visita, pos_visita
-
-    #Método para imprimir a árvore DFS
-    def imprimir_arvore(self, arvore_dfs, vertice, nivel=0):
-        if vertice not in arvore_dfs:
-            return
-
-        #Imprime o vértice atual
-        print("  " * nivel + str(vertice))
-
-        for filho in arvore_dfs[vertice]:
-            #Chama recursivamente o método para imprimir o filho
-            self.imprimir_arvore(arvore_dfs, filho, nivel = nivel+1)
-            
-    #Realiza O DFS              
+    #Método que inicia o DFS a partir dos vértices não visitados no grafo
     def busca_em_profundidade(self):
-        
-        #Cria o conjunto dos nos visitados 
+        #Conjunto que mantém o regsitro dos vértices já vistados
         visitados = set()
-        pre_visita = {}
-        pos_visita = {}
+        #Dicionário de chave única para atribuir o tempo de visita
         contador = {'contador': 1}
-        #Cria um dicionario para armazenar a árvore gerada 
+        #Dicionário para árvore resultante
         arvore_dfs = {}
-        
-        #Para cada vértice na lista de adjacência
-        for vertice in self.listaAdjacencia.keys():
-            #Se o vértice não foi visitado, chama o método dfs_visit
-            if vertice not in visitados:
-                self.dfs_visit(vertice, visitados, arvore_dfs,pre_visita, pos_visita,contador)
 
-        #Retorna a árvore DFS
-        return pre_visita, pos_visita
+        #Itera pelos vértices presentes na lista de adjacência armazenada
+        for vertice in self.listaAdjacencia.keys():
+            #verifica se o vértice não foi visitado
+            if vertice not in visitados:
+                #Chama o DFS
+                self.dfs_visit(vertice, visitados, arvore_dfs, contador)
+                
+    #Retorna o pre-visit e pos-visit para cada vértice
+    def imprimir_dfs(self):
+        print("\nTempos de Pré-Visita e Pós-Visita:")
+        #Itera sobre todos os vértices do grafo
+        for vertice in self.listaAdjacencia.keys():
+            #Imprime o tempo de pré e pós visita para cada vértice
+            return(f"{vertice}: ({self.pre_visita[vertice]}, {self.pos_visita[vertice]})")

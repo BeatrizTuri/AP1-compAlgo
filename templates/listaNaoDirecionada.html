@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inserir Lista</title>
+    <link rel="stylesheet" href="/static/styleListaNaoDirecionada.css">
+</head>
+<body>
+
+<header>
+    <h1>Insira o seu grafo no espaço abaixo e apertem em "inserir grafo", se existir subgrafos insira-os e aperte o botão "inserir subgrafo"</h1>
+</header>
+
+<label for="listaInput">Insira aqui:</label><br>
+<textarea id="listaInput" rows="4" cols="50"></textarea><br>
+<button onclick="inserirGrafo()">Inserir grafo</button>
+<button onclick="inserirSubgrafo()">Inserir subgrafo</button>
+<button onclick="exibirLista()">Exibir lista de adjacência</button>
+
+<div id="listaOutput"></div>
+
+<script>
+function inserirGrafo() {
+  var input = document.getElementById("listaInput").value;
+  var listaPares = parseInput(input);
+
+  pywebPython.insere_listaAdjacenciaDirecionada(listaPares);
+
+  document.getElementById("listaInput").value = "";
+}
+
+function inserirSubgrafo() {
+  var input = document.getElementById("listaInput").value;
+  var lines = input.split('\n');
+  var qtdSubgrafos = parseInt(lines[0]);
+  var listaPares = parseInput(input);
+
+  pywebPython.insere_subgrafo_direcionado(qtdSubgrafos, listaPares);
+
+  document.getElementById("listaInput").value = "";
+}
+
+function parseInput(input) {
+  var lines = input.split('\n');
+  var pairs = [];
+  for (var i = 1; i < lines.length; i++) { 
+    var pair = lines[i].trim().split(' ');
+    if (pair.length === 2) {
+      pairs.push([pair[0], pair[1]]);
+    }
+  }
+  return pairs;
+}
+
+function exibirLista() {
+  // Chamada à função Python para obter a lista de adjacência
+  pywebPython.imprimir_lista();
+  
+  // Exibir os botões BFS e DFS
+  var listaOutput = document.getElementById("listaOutput");
+  listaOutput.innerHTML += "<button onclick='executarBFS()'>BFS</button>";
+  listaOutput.innerHTML += "<button onclick='executarDFS()'>DFS</button>";
+}
+
+function executarBFS() {
+  // Implemente a lógica para execução da BFS
+}
+
+function executarDFS() {
+  // Implemente a lógica para execução da DFS
+}
+</script>
+
+
+<script src="pywebPython.js"></script>
+
+</body>
+</html>
