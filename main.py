@@ -107,7 +107,7 @@ def buscaEmLarguraDirecionada():
     if sd.listaAdjacenciaDirecionada != {}:
         subgrafo = sd.busca_em_largura_direcionada()
     
-    return flask.render_template('algoritimoDirecionadaBFS.html', grafoBFS=grafo, subgrafoBFS=subgrafo)
+    return flask.render_template('algoritmoDirecionadaBFS.html', grafoBFS=grafo, subgrafoBFS=subgrafo)
 
 #Rotas para os algoritmos de busca DFS
 @app.route('/BuscaEmProfundidadeDirecionada', methods=['GET'])
@@ -115,7 +115,7 @@ def buscaEmProfundidadeDirecionada():
     grafo = {}
     grafo = lad.busca_em_profundidade_direcionada()
     
-    return flask.render_template('algoritimoDirecionadaDFS.html', grafoDFS=grafo)
+    return flask.render_template('algoritmoDirecionadaDFS.html', grafoDFS=grafo)
 
 #Rotas para os algoritmos de busca BFS
 @app.route('/BuscaEmLargura', methods=['GET'])
@@ -127,7 +127,7 @@ def buscaEmLargura():
     if s.listaAdjacencia != {}:
         subgrafo = s.busca_em_largura()
     
-    return flask.render_template('algoritimoNaoDirecionadaBFS.html', grafoBFS=grafo, subgrafoBFS=subgrafo)
+    return flask.render_template('algoritmoNaoDirecionadaBFS.html', grafoBFS=grafo, subgrafoBFS=subgrafo)
 
 #Rotas para os algoritmos de busca DFS
 @app.route('/BuscaEmProfundidade', methods=['GET'])
@@ -135,7 +135,7 @@ def buscaEmProfundidade():
     grafo = {}
     grafo = la.busca_em_profundidade()
 
-    return flask.render_template('algoritimoNaoDirecionadaDFS.html', grafoDFS=grafo)
+    return flask.render_template('algoritmoNaoDirecionadaDFS.html', grafoDFS=grafo)
 
 if __name__ == "__main__":
     
