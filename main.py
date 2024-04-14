@@ -36,7 +36,10 @@ def insereListaDirecionada():
             
     lad.insere_listaAdjacenciaDirecionada(lista_formatada)
 
-    return "Lista de adjacência direcionada inserida com sucesso!"
+    if lista_formatada != []:
+        return "Lista de adjacência direcionada inserida com sucesso!"
+    else:
+        return "Erro ao inserir lista de adjacência direcionada!"
 
 #Rotas para as páginas de exibição de subgrafos
 @app.route('/insereSubgrafoDirecionado', methods=['POST'])
@@ -52,7 +55,10 @@ def insereSubgrafoDirecionado():
     lad.insere_subgrafo_direcionado(qtd, lista_formatada)
     sd.insere_subgrafo_direcionado(qtd, lista_formatada)
         
-    return "Subgrafo direcionado inserido com sucesso!"
+    if lista_formatada != []:
+        return "Subgrafo direcionado inserido com sucesso!"
+    else:
+        return "Erro ao inserir subgrafo direcionado!"
 
 #Rotas para as páginas de exibição de listas
 @app.route('/exibeListaDirecionada', methods=['GET'])
@@ -72,7 +78,10 @@ def insereListaNaoDirecionada():
             
     la.insere_listaAdjacencia(lista_formatada)
 
-    return "Lista de adjacência não direcionada inserida com sucesso!"
+    if lista_formatada != []:
+        return "Lista de adjacência não direcionada inserida com sucesso!"
+    else:
+        return "Erro ao inserir lista de adjacência não direcionada!"
 
 #Rotas para as páginas de exibição de subgrafos
 @app.route('/insereSubgrafoNaoDirecionado', methods=['POST'])   
@@ -88,7 +97,10 @@ def insereSubgrafoNaoDirecionado():
     la.insere_subgrafo(qtd, lista_formatada)
     s.insere_subgrafo(qtd, lista_formatada)
     
-    return "Subgrafo não direcionado inserido com sucesso!"
+    if lista_formatada != []:
+        return "Subgrafo não direcionado inserido com sucesso!"
+    else:
+        return "Erro ao inserir subgrafo não direcionado!"
 
 #Rotas para as páginas de exibição de listas
 @app.route('/exibeListaNaoDirecionada', methods=['GET'])
