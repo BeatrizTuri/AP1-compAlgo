@@ -113,7 +113,7 @@ def buscaEmLarguraDirecionada():
 @app.route('/BuscaEmProfundidadeDirecionada', methods=['GET'])
 def buscaEmProfundidadeDirecionada():
     grafo = {}
-    la.busca_em_profundidade()
+    grafo = lad.busca_em_profundidade_direcionada()
     
     return flask.render_template('algoritimoDirecionadaDFS.html', grafoDFS=grafo)
 
