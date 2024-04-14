@@ -1,66 +1,109 @@
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
-  }
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+}
 
-  header {
-    background-color: #177e11; /* Cor de fundo verde */
-    color: #fff; /* Cor do texto branco */
-    padding: 20px; /* Espaçamento interno */
-    text-align: center; /* Centralizar o texto */
+header {
+  background-color: #177e11;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
 }
 
 header h1 {
-  margin: 0; /* Remover margem padrão do h1 */
-  color: #fff; /* Cor do texto branco */
+  margin: 0;
 }
-  
-  .container {
-    max-width: 800px;
-    margin: 50px auto;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  
 
-  
-  label {
-    font-size: 16px;
-    color: #333;
-  }
-  
-  #listaInput {
-    width: 80%; /* Largura da textarea (80% do container) */
-    height: 10vh; /* Altura inicial da textarea (50% da altura da viewport) */
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    resize: vertical; /* Permitir redimensionamento vertical */
-    box-sizing: border-box; /* Incluir padding e borda na largura */
+.container {
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
 }
-  
-  button {
-    background-color: #177e11; /* Cor de fundo verde */
-    color: #fff; /* Cor do texto branco */
-    padding: 10px 20px; /* Espaçamento interno */
-    margin-right: 10px; /* Margem à direita para separar os botões */
-    border: none; /* Remover a borda */
-    cursor: pointer; /* Alterar cursor para indicar interatividade */
-    border-radius: 20px; /* Arredondar as bordas */
+
+label {
+  font-size: 16px;
+  color: #333;
 }
-  
-  button:hover {
-    background-color: #0056b3;
-  }
-  
-  #listaOutput {
-    margin-top: 20px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  
+
+textarea {
+  width: 80%;
+  height: 10vh;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #177e11; /* Cor verde utilizada na página */
+  resize: vertical;
+  box-sizing: border-box;
+}
+
+input[type="text"] {
+  width: 20%; /* Mesma largura que o textarea */
+  height: 5%;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #177e11; /* Cor verde utilizada na página */
+  box-sizing: border-box;
+}
+
+button {
+  background-color: #177e11;
+  color: #fff;
+  padding: 10px 20px;
+  margin-top: 10px;
+  border: none;
+  cursor: pointer;
+  border-radius: 20px;
+}
+
+button:hover {
+  background-color: #00b38f;
+}
+
+#listaOutput {
+  margin-top: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  border: 1px solid #177e11;
+  min-height: 200px; /* Defina a altura mínima desejada */
+  max-height: 400px; /* Defina a altura máxima desejada */
+  overflow-y: auto; /* Adiciona barra de rolagem vertical quando necessário */
+}
+
+#listaOutput ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+#listaOutput ul li {
+  margin-bottom: 5px;
+}
+
+/* Estilos para os novos botões */
+#listaOutput + div {
+  margin-top: 20px;
+}
+
+#listaOutput + div button {
+  margin-right: 10px;
+}
+
+/* Estilos para o botão de volta */
+#linkVoltar {
+  position: absolute;
+  left: 20px; /* Ajusta a posição da seta para o canto esquerdo */
+  top: 20px; /* Ajusta a posição da seta para o topo */
+  font-size: 24px;
+  color: #fff;
+  text-decoration: none;
+  transition: opacity 0.3s ease; /* Adiciona transição suave */
+}
+
+#linkVoltar:hover {
+  opacity: 0.8; /* Reduz a opacidade ao passar o mouse */
+}
