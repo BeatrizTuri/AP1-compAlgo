@@ -142,6 +142,10 @@ def buscaEmProfundidade():
         grafo = la.busca_em_profundidade()
     if s.listaAdjacencia != {}:
         subgrafo = s.busca_em_profundidade()
+
+    print(grafo)
+    
+    print(subgrafo)
     
     return flask.render_template('algoritimoNaoDirecionadaDFS.html', grafoDFS=grafo, subgrafoDFS=subgrafo)
 

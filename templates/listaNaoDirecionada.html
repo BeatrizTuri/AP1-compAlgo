@@ -24,13 +24,13 @@
     </div>
 
     <div>
-        <h2>Inserir Subgrafo Direcionado</h2>
+        <h2>Inserir Componente Desconexa</h2>
         <form action="/insereSubgrafoNaoDirecionado" method="post">
-            <label for="subgrafoInput">Insira aqui o Subgrafo no formato:[("A", "B"), ("A", "E"),...]</label><br>
+            <label for="subgrafoInput">Insira aqui a componente desconexa no formato:[("A", "B"), ("A", "E"),...]</label><br>
             <textarea id="subgrafoInput" name="subgrafoInput" rows="4" cols="50"></textarea><br>
             <label for="qtdInput">Quantidade:</label>
             <input type="text" id="qtdInput" name="qtdInput"><br>
-            <button type="submit">Inserir subgrafo</button>
+            <button type="submit">Inserir Componente</button>
         </form>
         <div id="subgrafoOutput"></div>
     </div>
@@ -53,7 +53,7 @@
             </ul>
             {% endif %}
             {% if subgrafo %}
-            <h3>Subgrafo:</h3>
+            <h3>Componente:</h3>
             <ul>
                 {% for key, value in subgrafo.items() %}
                     <li>{{ key }}: {{ value }}</li>
@@ -62,14 +62,18 @@
             {% endif %}
         </div>
     </div>
+
+    <div id="botoesdebusca">
+        <form action="/BuscaEmLargura" method="get">
+           <button type="submit">BFS</button>
+       </form>
+       <form action="/BuscaEmProfundidade" method="get">
+           <button type="submit">DFS</button>
+       </form>
+    </div>
+
+
 </div>
-<div id="botoesdebusca">
-    <form action="/BuscaEmLargura" method="get">
-       <button type="submit">BFS</button>
-   </form>
-   <form action="/BuscaEmProfundidade" method="get">
-       <button type="submit">DFS</button>
-   </form>
-</div>
+
 </body>
 </html>

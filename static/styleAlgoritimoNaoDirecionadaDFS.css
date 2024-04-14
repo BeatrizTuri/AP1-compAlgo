@@ -1,0 +1,68 @@
+/* Estilos para o body */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+/* Estilos para o header */
+header {
+    background-color: #177e11;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Estilos para o h1 dentro do header */
+header h1 {
+    margin: 0;
+}
+
+/* Estilos para a container principal */
+.container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center; /* Centraliza todo o conteúdo dentro da container */
+}
+
+/* Estilos para o resultado DFS */
+#resultadoDFS {
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    min-height: 200px; /* Altura mínima desejada para o resultado */
+    max-height: 400px; /* Altura máxima desejada para o resultado */
+    overflow-y: auto; /* Adiciona barra de rolagem vertical quando necessário */
+}
+
+/* Estilos para os itens da lista dentro do resultado DFS */
+#resultadoDFS ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+/* Estilos para cada item da lista dentro do resultado DFS */
+#resultadoDFS ul li {
+    margin-bottom: 5px;
+}
+
+/* Estilos para o botão de volta */
+#linkVoltar {
+    position: absolute;
+    left: 20px; /* Ajusta a posição da seta para o canto esquerdo */
+    top: 20px; /* Ajusta a posição da seta para o topo */
+    font-size: 24px;
+    color: #fff;
+    text-decoration: none;
+    transition: opacity 0.3s ease; /* Adiciona transição suave */
+}
+
+#linkVoltar:hover {
+    opacity: 0.8; /* Reduz a opacidade ao passar o mouse */
+}

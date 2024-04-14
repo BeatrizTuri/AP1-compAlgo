@@ -55,12 +55,15 @@ class ListaAdjacencia:
         #Cria uma fila para armazenar os vértices a serem visitados
         fila = deque([vertice_inicial])
 
+        resultados = []
+
         #Enquanto a fila não estiver vazia
         while fila:
             #Remove o primeiro vértice da fila
             vertice = fila.popleft()
             #Se o vértice não foi visitado
             if vertice not in visitados:
+                resultados.append(vertice)
                 #Adiciona o vértice aos visitados
                 visitados.add(vertice)
                 
@@ -72,7 +75,7 @@ class ListaAdjacencia:
                     if vizinho not in visitados:
                         #Adiciona o vizinho à fila
                         fila.append(vizinho)
-        return visitados
+        return resultados
 
     #Algoritmo que realiza a busca em profundidade (DFS)
     def dfs_visit(self, vertice, visitados, arvore_dfs, contador):

@@ -24,6 +24,7 @@ header h1 {
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   text-align: center;
+  position: relative; /* Adiciona posição relativa para container */
 }
 
 label {
@@ -64,17 +65,19 @@ button:hover {
   background-color: #00b38f;
 }
 
-#botõesdebusca {
+#botoesdebusca {
   text-align: center; /* Alinha os botões no centro horizontalmente */
+  justify-content: center;
+  display: flex;
 }
 
-#botõesdebusca form {
+#botoesdebusca form {
   display: inline-block; /* Permite que os botões fiquem lado a lado */
   margin-right: 10px; /* Espaçamento entre os botões */
 }
 
 
-#botõesdebusca button { 
+#botoesdebusca button { 
   width: 100px; /* Ajuste a largura conforme necessário */
   margin-right: 10px; /* Espaçamento entre os botões */
   background-color: #177e11;
