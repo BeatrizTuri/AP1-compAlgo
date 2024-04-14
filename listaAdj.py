@@ -50,19 +50,24 @@ class ListaAdjacencia:
         
         #Escolhe o primeiro vértice como inicial
         vertice_inicial = next(iter(self.listaAdjacencia))  
+        
         #Cria um conjunto para armazenar os vértices visitados
         visitados = set()
+        
         #Cria uma fila para armazenar os vértices a serem visitados
         fila = deque([vertice_inicial])
-
+        
+        #Cria uma lista para armazenar os resultados   
         resultados = []
 
         #Enquanto a fila não estiver vazia
         while fila:
             #Remove o primeiro vértice da fila
             vertice = fila.popleft()
+            
             #Se o vértice não foi visitado
             if vertice not in visitados:
+                #Adiciona o vértice aos resultados
                 resultados.append(vertice)
                 #Adiciona o vértice aos visitados
                 visitados.add(vertice)
@@ -75,6 +80,8 @@ class ListaAdjacencia:
                     if vizinho not in visitados:
                         #Adiciona o vizinho à fila
                         fila.append(vizinho)
+                        
+        #Retorna os resultados
         return resultados
 
     #Algoritmo que realiza a busca em profundidade (DFS)
