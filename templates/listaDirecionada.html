@@ -7,62 +7,72 @@
     <link rel="stylesheet" href="/static/styleListaDirecionada.css">
 </head>
 <body>
-
-<header>
-    <h1>Grafos Direcionados</h1>
-</header>
-<div class="container">
-
-    <div>
-        <h2>Inserir Grafo Direcionado</h2>
-        <form action="/insereListaDirecionada" method="post">
-            <label for="grafoInput">Insira aqui o Grafo:</label><br>
-            <textarea id="grafoInput" name="grafoInput" rows="4" cols="50"></textarea><br>
-            <button type="submit">Inserir grafo</button>
-        </form>
-    </div>
-
-    <div>
-        <h2>Inserir Subgrafo Direcionado</h2>
-        <form action="/insereSubgrafoDirecionado" method="post">
-            <label for="subgrafoInput">Insira aqui o Subgrafo:</label><br>
-            <textarea id="subgrafoInput" name="subgrafoInput" rows="4" cols="50"></textarea><br>
-            <label for="qtdInput">Quantidade:</label>
-            <input type="text" id="qtdInput" name="qtdInput"><br>
-            <button type="submit">Inserir subgrafo</button>
-        </form>
-        <div id="subgrafoOutput"></div>
-    </div>
-
-    <div>
-        <form action="/exibeListaDirecionada" method="get">
-            <button type="submit">Exibir lista de adjacência</button>
-        </form>
-    </div>
-
-    <div>
-        <h2>Lista de Adjacência</h2>
-        <div id="listaOutput">
-            {% if grafo %}
-            <h3>Grafo:</h3>
-            <ul>
-                {% for key, value in grafo.items() %}
-                    <li>{{ key }}: {{ value }}</li>
-                {% endfor %}
-            </ul>
-            {% endif %}
-            {% if subgrafo %}
-            <h3>Subgrafo:</h3>
-            <ul>
-                {% for key, value in subgrafo.items() %}
-                    <li>{{ key }}: {{ value }}</li>
-                {% endfor %}
-            </ul>
-            {% endif %}
+    <header>
+        <h1>Grafos Direcionados</h1>
+    </header>
+    <div class="container">
+        <div>
+            <h2>Inserir Grafo Direcionado</h2>
+            <form action="/insereListaDirecionada" method="post">
+                <label for="grafoInput">Insira aqui o Grafo no formato:[("A", "B"), ("A", "E"),...] </label><br>
+                <textarea id="grafoInput" name="grafoInput" rows="4" cols="50"></textarea><br>
+                <button type="submit">Inserir grafo</button>
+            </form>
+        </div>
+        <div>
+            <h2>Inserir Subgrafo Direcionado</h2>
+            <form action="/insereSubgrafoDirecionado" method="post">
+                <label for="subgrafoInput">Insira aqui o Subgrafo no formato:[("A", "B"), ("A", "E"),...] </label><br>
+                <textarea id="subgrafoInput" name="subgrafoInput" rows="4" cols="50"></textarea><br>
+                <label for="qtdInput">Quantidade:</label>
+                <input type="text" id="qtdInput" name="qtdInput"><br>
+                <button type="submit">Inserir subgrafo</button>
+            </form>
+            <div id="subgrafoOutput"></div>
+        </div>
+        <div>
+            <form action="/exibeListaDirecionada" method="get">
+                <button type="submit">Exibir lista de adjacência</button>
+            </form>
+        </div>
+        <div>
+            <h2>Lista de Adjacência</h2>
+            <div id="listaOutput">
+                {% if grafo %}
+                <h3>Grafo:</h3>
+                <ul>
+                    {% for key, value in grafo.items() %}
+                        <li>{{ key }}: {{ value }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+                {% if subgrafo %}
+                <h3>Subgrafo:</h3>
+                <ul>
+                    {% for key, value in subgrafo.items() %}
+                        <li>{{ key }}: {{ value }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            </div>
+            <!-- Aqui estão os novos botões -->
+            <div>
+                <button onclick="funcaoBotaoUm()">Botão Um</button>
+                <button onclick="funcaoBotaoDois()">Botão Dois</button>
+            </div>
         </div>
     </div>
-    
-</div>
-
+    <script>
+        // Adicione aqui suas funções JavaScript para os botões, se necessário
+        function funcaoBotaoUm() {
+            // Lógica para o Botão Um
+            alert("Botão Um clicado!");
+        }
+        
+        function funcaoBotaoDois() {
+            // Lógica para o Botão Dois
+            alert("Botão Dois clicado!");
+        }
+    </script>
 </body>
 </html>
