@@ -15,27 +15,12 @@
 <div class="container">
     <h2>Resultado DFS</h2>
     <div id="resultadoDFS">
-        {% if grafoDFS %}
-            <h3>Grafo:</h3>
-            <ul>
-                {% for key, value in grafoDFS.items() %}
-                    <li>{{ key }}: {{ value }}</li>
-                {% endfor %}
-            </ul>
-        {% else %}
-            <p>Nenhum resultado encontrado para o grafo.</p>
-        {% endif %}
-        
-        {% if subgrafoDFS %}
-            <h3>Subgrafo:</h3>
-            <ul>
-                {% for key, value in subgrafoDFS.items() %}
-                    <li>{{ key }}: {{ value }}</li>
-                {% endfor %}
-            </ul>
-        {% else %}
-            <p>Nenhum resultado encontrado para o subgrafo.</p>
-        {% endif %}
+        <h3>Grafo:</h3>
+        <ul>
+            {% for key, value in grafoDFS.items() %}
+                <li>{{ key }}: {{ value }}</li>
+            {% endfor %}
+        </ul>
     </div>
 </div>
 </body>

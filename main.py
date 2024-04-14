@@ -49,17 +49,17 @@ def insereSubgrafoDirecionado():
         if lista_pares[i] == "(":
             lista_formatada.append((lista_pares[i+2], lista_pares[i+7]))
     
+    lad.insere_subgrafo_direcionado(qtd, lista_formatada)
     sd.insere_subgrafo_direcionado(qtd, lista_formatada)
-    
+        
     return "Subgrafo direcionado inserido com sucesso!"
 
 #Rotas para as páginas de exibição de listas
 @app.route('/exibeListaDirecionada', methods=['GET'])
 def exibeListaDirecionada():
     grafo = lad.listaAdjacenciaDirecionada
-    subgrafo = sd.listaAdjacenciaDirecionada
 
-    return flask.render_template('listaDirecionada.html', grafo=grafo, subgrafo=subgrafo)
+    return flask.render_template('listaDirecionada.html', grafo=grafo)
 
 #Rotas para as páginas de exibição de listas
 @app.route('/insereListaNaoDirecionada', methods=['POST'])
@@ -85,6 +85,7 @@ def insereSubgrafoNaoDirecionado():
         if lista_pares[i] == "(":
             lista_formatada.append((lista_pares[i+2], lista_pares[i+7]))
     
+    la.insere_subgrafo(qtd, lista_formatada)
     s.insere_subgrafo(qtd, lista_formatada)
     
     return "Subgrafo não direcionado inserido com sucesso!"
@@ -93,9 +94,8 @@ def insereSubgrafoNaoDirecionado():
 @app.route('/exibeListaNaoDirecionada', methods=['GET'])
 def exibeListaNaoDirecionada():
     grafo = la.listaAdjacencia
-    subgrafo = s.listaAdjacencia
 
-    return flask.render_template('listaNaoDirecionada.html', grafo=grafo, subgrafo=subgrafo)
+    return flask.render_template('listaNaoDirecionada.html', grafo=grafo)
 
 #Rotas para os algoritmos de busca BFS
 @app.route('/BuscaEmLarguraDirecionada', methods=['GET'])
@@ -113,13 +113,9 @@ def buscaEmLarguraDirecionada():
 @app.route('/BuscaEmProfundidadeDirecionada', methods=['GET'])
 def buscaEmProfundidadeDirecionada():
     grafo = {}
-    subgrafo = {}
-    if lad.listaAdjacenciaDirecionada != {}:
-        grafo = lad.busca_em_profundidade_direcionada()
-    if sd.listaAdjacenciaDirecionada != {}:
-        subgrafo = sd.busca_em_profundidade_direcionada()
+    la.busca_em_profundidade()
     
-    return flask.render_template('algoritimoDirecionadaDFS.html', grafoDFS=grafo, subgrafoDFS=subgrafo)
+    return flask.render_template('algoritimoDirecionadaDFS.html', grafoDFS=grafo)
 
 #Rotas para os algoritmos de busca BFS
 @app.route('/BuscaEmLargura', methods=['GET'])
@@ -137,29 +133,30 @@ def buscaEmLargura():
 @app.route('/BuscaEmProfundidade', methods=['GET'])
 def buscaEmProfundidade():
     grafo = {}
-    subgrafo = {}
-    if la.listaAdjacencia != {}:
-        grafo = la.busca_em_profundidade()
-    if s.listaAdjacencia != {}:
-        subgrafo = s.busca_em_profundidade()
+    grafo = la.busca_em_profundidade()
 
-    print(grafo)
-    
-    print(subgrafo)
-    
-    return flask.render_template('algoritimoNaoDirecionadaDFS.html', grafoDFS=grafo, subgrafoDFS=subgrafo)
+    return flask.render_template('algoritimoNaoDirecionadaDFS.html', grafoDFS=grafo)
 
 if __name__ == "__main__":
     
-    #Iniciando o servidor
+    # #Iniciando o servidor
     if not os.environ.get("WERKZEUG_RUN_MAIN"): #Executa apenas uma vez
         webbrowser.open("http://127.0.0.1:5000")
 
     app.run(debug=True)
     
     # g1 = ListaAdjacenciaDirecionada()
+    # g2 = ListaAdjacencia()
+    # g3 = ListaAdjacencia()
     
-    # g1.insere_listaAdjacenciaDirecionada([('A', 'B'), ('A', 'C'), ('B', 'C'), ('B', 'D'), ('C', 'D'), ('D', 'C'), ('E', 'F'), ('F', 'C')])
+    # # # g1.insere_listaAdjacenciaDirecionada([('A', 'B'), ('A', 'C'), ('B', 'C'), ('B', 'D'), ('C', 'D'), ('D', 'C'), ('E', 'F'), ('F', 'C')])
     
-    # g1.busca_em_largura_direcionada()
+    # # # g1.busca_em_largura_direcionada()
 
+    # g2.insere_listaAdjacencia([("A", "B"), ("A", "E"), ("B", "C"), ("B", "E"), ("C", "F"), ("E", "F"), ("F", "I")])
+    
+    # g3.insere_subgrafo('1', [("D", "H"), ("D", "G"), ("G", "H")])
+    
+    # print(g2.busca_em_profundidade())
+    
+    # print(g2.busca_em_largura())
