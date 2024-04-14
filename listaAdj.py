@@ -7,6 +7,7 @@ class ListaAdjacencia:
         self.listaAdjacencia = {}
         self.pre_visita = {}
         self.pos_visita = {}
+        self.resultado_dfs = {}
 
 
     #Método para inserir uma lista de pares
@@ -60,8 +61,6 @@ class ListaAdjacencia:
             vertice = fila.popleft()
             #Se o vértice não foi visitado
             if vertice not in visitados:
-                #Imprime o vértice
-                print(vertice, end=' ')
                 #Adiciona o vértice aos visitados
                 visitados.add(vertice)
                 
@@ -73,6 +72,7 @@ class ListaAdjacencia:
                     if vizinho not in visitados:
                         #Adiciona o vizinho à fila
                         fila.append(vizinho)
+        return visitados
 
     #Algoritmo que realiza a busca em profundidade (DFS)
     def dfs_visit(self, vertice, visitados, arvore_dfs, contador):
@@ -115,6 +115,11 @@ class ListaAdjacencia:
             if vertice not in visitados:
                 #Chama o DFS
                 self.dfs_visit(vertice, visitados, arvore_dfs, contador)
+
+        for vertice in self.listaAdjacenciaDirecionada.keys():
+            self.resultado_dfs[vertice] = [self.pre_visita[vertice], self.pos_visita[vertice]]
+        
+        return self.resultado_dfs
                 
     #Retorna o pre-visit e pos-visit para cada vértice
     def imprimir_dfs(self):
