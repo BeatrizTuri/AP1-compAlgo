@@ -4,13 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Algoritmos de Busca</title>
-    <link rel="stylesheet" href="/static/styleListaDirecionadaDFS.css">
+    <link rel="stylesheet" href="/static/styleAlgoritimoDirecionadaDFS.css">
 </head>
 <body>
 
+
+
+
+
 <header>
     <h1>Grafos Direcionados</h1>
+    <a id="linkVoltar" href="javascript:history.back()">&#8592;</a>
 </header>
+
+
+
 <div class="container">
     <h2>Resultado DFS</h2>
     <div id="resultadoDFS">
@@ -33,7 +41,7 @@
                 {% endfor %}
             </ul>
         {% else %}
-            <p>Nenhum resultado encontrado para o subgrafo.</p>
+            <p>Nenhum resultado encontrado para componente desconexa.</p>
         {% endif %}
     </div>
 </div>
