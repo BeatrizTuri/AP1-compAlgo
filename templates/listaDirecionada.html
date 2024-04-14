@@ -43,7 +43,22 @@
     <div>
         <h2>Lista de Adjacência</h2>
         <div id="listaOutput">
-        
+            {% if grafo %}
+            <h3>Grafo:</h3>
+            <ul>
+                {% for key, value in grafo.items() %}
+                    <li>{{ key }}: {{ value }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+            {% if subgrafo %}
+            <h3>Subgrafo:</h3>
+            <ul>
+                {% for key, value in subgrafo.items() %}
+                    <li>{{ key }}: {{ value }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
         </div>
     </div>
     

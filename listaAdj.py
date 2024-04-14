@@ -36,8 +36,8 @@ class ListaAdjacencia:
 
     #Método para identificar a quantidade de subgrafos a serem inseridos e armazena-los
     def insere_subgrafo(self, qtd, lista_de_subgrafos):
-        for subgrafo in lista_de_subgrafos[:qtd]:
-            self.insere_listaAdjacencia(subgrafo)
+        for _ in qtd:
+            self.insere_listaAdjacencia(lista_de_subgrafos)
     
     #Imprime as listas armazenadas      
     def imprimir_lista(self):

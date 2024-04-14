@@ -25,28 +25,74 @@ def listaNaoDirecionada():
 @app.route('/insereListaDirecionada', methods=['POST'])
 def insereListaDirecionada():
     lista_pares = flask.request.form.get("grafoInput")
-    lista_pares = [tuple(pair.strip().split(',')) for pair in lista_pares.split('\n') if len(pair.strip().split(',')) == 2]
-    lad.insere_listaAdjacenciaDirecionada(lista_pares)
- 
-    return "Lista de adjacência direcionada inserida com sucesso!" 
+    lista_formatada = []
+    for i in range (len(lista_pares)):
+        if lista_pares[i] == "(":
+            lista_formatada.append((lista_pares[i+2], lista_pares[i+7]))
+            
+    lad.insere_listaAdjacenciaDirecionada(lista_formatada)
+
+    return "Lista de adjacência direcionada inserida com sucesso!"
 
 @app.route('/insereSubgrafoDirecionado', methods=['POST'])
 def insereSubgrafoDirecionado():
-  
     dados = flask.request.form
     qtd = dados.get("qtdInput")
     lista_pares = dados.get("subgrafoInput")
-    lista_pares = [tuple(pair.strip().split(',')) for pair in lista_pares.split('\n') if len(pair.strip().split(',')) == 2] 
-    sd.insere_subgrafo_direcionado(qtd, lista_pares)
+    lista_formatada = []
+    for i in range (len(lista_pares)):
+        if lista_pares[i] == "(":
+            lista_formatada.append((lista_pares[i+2], lista_pares[i+7]))
+    
+    sd.insere_subgrafo_direcionado(qtd, lista_formatada)
     
     return "Subgrafo direcionado inserido com sucesso!"
 
 @app.route('/exibeListaDirecionada', methods=['GET'])
 def exibeListaDirecionada():
-    grafo = lad.imprimir_lista_direcionada()
-    subgrafo = sd.imprimir_lista_direcionada()
-    
+    grafo = lad.listaAdjacenciaDirecionada
+    subgrafo = sd.listaAdjacenciaDirecionada
+
+    print(grafo)
+    print(subgrafo) 
+
     return flask.render_template('listaDirecionada.html', grafo=grafo, subgrafo=subgrafo)
+
+@app.route('/insereListaNaoDirecionada', methods=['POST'])
+def insereListaNaoDirecionada():
+    lista_pares = flask.request.form.get("grafoInput")
+    lista_formatada = []
+    for i in range (len(lista_pares)):
+        if lista_pares[i] == "(":
+            lista_formatada.append((lista_pares[i+2], lista_pares[i+7]))
+            
+    la.insere_listaAdjacencia(lista_formatada)
+
+    return "Lista de adjacência não direcionada inserida com sucesso!"
+
+@app.route('/insereSubgrafoNaoDirecionado', methods=['POST'])   
+def insereSubgrafoNaoDirecionado(): 
+    dados = flask.request.form
+    qtd = dados.get("qtdInput")
+    lista_pares = dados.get("subgrafoInput")
+    lista_formatada = []
+    for i in range (len(lista_pares)):
+        if lista_pares[i] == "(":
+            lista_formatada.append((lista_pares[i+2], lista_pares[i+7]))
+    
+    s.insere_subgrafo(qtd, lista_formatada)
+    
+    return "Subgrafo não direcionado inserido com sucesso!"
+
+@app.route('/exibeListaNaoDirecionada', methods=['GET'])
+def exibeListaNaoDirecionada():
+    grafo = la.listaAdjacencia
+    subgrafo = s.listaAdjacencia
+
+    print(grafo)
+    print(subgrafo) 
+
+    return flask.render_template('listaNaoDirecionada.html', grafo=grafo, subgrafo=subgrafo)
 
 
 

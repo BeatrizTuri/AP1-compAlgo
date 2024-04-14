@@ -3,79 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inserir Lista</title>
+    <title>Inserir Lista Direcionada</title>
     <link rel="stylesheet" href="/static/styleListaNaoDirecionada.css">
 </head>
 <body>
 
-  <header>
-    <h1>Grafos não Direcionados</h1>
-  </header>
-  <div class = 'container'>
+<header>
+    <h1>Grafos Não Direcionados</h1>
+</header>
+<div class="container">
 
+    <div>
+        <h2>Inserir Grafo Não Direcionado</h2>
+        <form action="/insereListaNaoDirecionada" method="post">
+            <label for="grafoInput">Insira aqui o Grafo:</label><br>
+            <textarea id="grafoInput" name="grafoInput" rows="4" cols="50"></textarea><br>
+            <button type="submit">Inserir grafo</button>
+        </form>
+    </div>
 
-<label for="listaInput">Insira aqui seu Grafo ou Subgrafo (Caso exista):</label><br>
-<textarea id="listaInput" rows="4" cols="50"></textarea><br>
-<button onclick="inserirGrafo()">Inserir grafo</button>
-<button onclick="inserirSubgrafo()">Inserir subgrafo</button>
-<button onclick="exibirLista()">Exibir lista de adjacência</button>
+    <div>
+        <h2>Inserir Subgrafo Direcionado</h2>
+        <form action="/insereSubgrafoNaoDirecionado" method="post">
+            <label for="subgrafoInput">Insira aqui o Subgrafo:</label><br>
+            <textarea id="subgrafoInput" name="subgrafoInput" rows="4" cols="50"></textarea><br>
+            <label for="qtdInput">Quantidade:</label>
+            <input type="text" id="qtdInput" name="qtdInput"><br>
+            <button type="submit">Inserir subgrafo</button>
+        </form>
+        <div id="subgrafoOutput"></div>
+    </div>
 
-<div id="listaOutput"></div>
+    <div>
+        <form action="/exibeListaNaoDirecionada" method="get">
+            <button type="submit">Exibir lista de adjacência</button>
+        </form>
+    </div>
 
-<script>
-function inserirGrafo() {
-  var input = document.getElementById("listaInput").value;
-  var listaPares = parseInput(input);
-
-  pywebPython.insere_listaAdjacenciaDirecionada(listaPares);
-
-  document.getElementById("listaInput").value = "";
-}
-
-function inserirSubgrafo() {
-  var input = document.getElementById("listaInput").value;
-  var lines = input.split('\n');
-  var qtdSubgrafos = parseInt(lines[0]);
-  var listaPares = parseInput(input);
-
-  pywebPython.insere_subgrafo_direcionado(qtdSubgrafos, listaPares);
-
-  document.getElementById("listaInput").value = "";
-}
-
-function parseInput(input) {
-  var lines = input.split('\n');
-  var pairs = [];
-  for (var i = 1; i < lines.length; i++) { 
-    var pair = lines[i].trim().split(' ');
-    if (pair.length === 2) {
-      pairs.push([pair[0], pair[1]]);
-    }
-  }
-  return pairs;
-}
-
-function exibirLista() {
-  // Chamada à função Python para obter a lista de adjacência
-  pywebPython.imprimir_lista();
-  
-  // Exibir os botões BFS e DFS
-  var listaOutput = document.getElementById("listaOutput");
-  listaOutput.innerHTML += "<button onclick='executarBFS()'>BFS</button>";
-  listaOutput.innerHTML += "<button onclick='executarDFS()'>DFS</button>";
-}
-
-function executarBFS() {
-  // Implemente a lógica para execução da BFS
-}
-
-function executarDFS() {
-  // Implemente a lógica para execução da DFS
-}
-</script>
-
-
-<script src="pywebPython.js"></script>
+    <div>
+        <h2>Lista de Adjacência</h2>
+        <div id="listaOutput">
+            {% if grafo %}
+            <h3>Grafo:</h3>
+            <ul>
+                {% for key, value in grafo.items() %}
+                    <li>{{ key }}: {{ value }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+            {% if subgrafo %}
+            <h3>Subgrafo:</h3>
+            <ul>
+                {% for key, value in subgrafo.items() %}
+                    <li>{{ key }}: {{ value }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+    </div>
+    
+</div>
 
 </body>
 </html>
