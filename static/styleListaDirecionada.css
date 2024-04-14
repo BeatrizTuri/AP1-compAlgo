@@ -92,3 +92,19 @@ button:hover {
 #listaOutput + div button {
   margin-right: 10px;
 }
+
+
+/* Estilos para o botão de volta */
+#linkVoltar {
+  position: absolute;
+  left: 20px; /* Ajusta a posição da seta para o canto esquerdo */
+  top: 20px; /* Ajusta a posição da seta para o topo */
+  font-size: 24px;
+  color: #fff;
+  text-decoration: none;
+  transition: opacity 0.3s ease; /* Adiciona transição suave */
+}
+
+#linkVoltar:hover {
+  opacity: 0.8; /* Reduz a opacidade ao passar o mouse */
+}
