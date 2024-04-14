@@ -58,7 +58,31 @@ button {
   border: none;
   cursor: pointer;
   border-radius: 20px;
+  display: inline-block;
 }
+
+#botõesdebusca {
+  text-align: center; /* Alinha os botões no centro horizontalmente */
+}
+
+#botõesdebusca form {
+  display: inline-block; /* Permite que os botões fiquem lado a lado */
+  margin-right: 10px; /* Espaçamento entre os botões */
+}
+
+
+#botõesdebusca button { 
+  width: 100px; /* Ajuste a largura conforme necessário */
+  margin-right: 10px; /* Espaçamento entre os botões */
+  background-color: #177e11;
+  color: #fff;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  border-radius: 20px;
+}
+
+
 
 button:hover {
   background-color: #00b38f;
