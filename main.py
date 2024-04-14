@@ -37,10 +37,9 @@ def insereListaDirecionada():
     lad.insere_listaAdjacenciaDirecionada(lista_formatada)
 
     if lista_formatada != []:
-        return "Lista de adjacência direcionada inserida com sucesso!"
+        return flask.render_template('mensagem.html', mensagem="Grafo inserido com sucesso!")
     else:
-        return "Erro ao inserir lista de adjacência direcionada!"
-
+        return flask.render_template('mensagem.html', mensagem="Erro ao inserir o Grafo!")
 #Rotas para as páginas de exibição de subgrafos
 @app.route('/insereSubgrafoDirecionado', methods=['POST'])
 def insereSubgrafoDirecionado():
@@ -56,9 +55,9 @@ def insereSubgrafoDirecionado():
     sd.insere_subgrafo_direcionado(qtd, lista_formatada)
         
     if lista_formatada != []:
-        return "Subgrafo direcionado inserido com sucesso!"
+        return flask.render_template('mensagem.html', mensagem="Grafo inserido com sucesso!")
     else:
-        return "Erro ao inserir subgrafo direcionado!"
+        return flask.render_template('mensagem.html', mensagem="Erro ao inserir o Grafo!")
 
 #Rotas para as páginas de exibição de listas
 @app.route('/exibeListaDirecionada', methods=['GET'])
@@ -79,9 +78,9 @@ def insereListaNaoDirecionada():
     la.insere_listaAdjacencia(lista_formatada)
 
     if lista_formatada != []:
-        return "Lista de adjacência não direcionada inserida com sucesso!"
+        return flask.render_template('mensagem.html', mensagem="Grafo inserido com sucesso!")
     else:
-        return "Erro ao inserir lista de adjacência não direcionada!"
+        return flask.render_template('mensagem.html', mensagem="Erro ao inserir o Grafo!")
 
 #Rotas para as páginas de exibição de subgrafos
 @app.route('/insereSubgrafoNaoDirecionado', methods=['POST'])   
@@ -98,9 +97,9 @@ def insereSubgrafoNaoDirecionado():
     s.insere_subgrafo(qtd, lista_formatada)
     
     if lista_formatada != []:
-        return "Subgrafo não direcionado inserido com sucesso!"
+        return flask.render_template('mensagem.html', mensagem="Grafo inserido com sucesso!")
     else:
-        return "Erro ao inserir subgrafo não direcionado!"
+        return flask.render_template('mensagem.html', mensagem="Erro ao inserir o Grafo!")
 
 #Rotas para as páginas de exibição de listas
 @app.route('/exibeListaNaoDirecionada', methods=['GET'])
