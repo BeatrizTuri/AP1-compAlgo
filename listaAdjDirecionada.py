@@ -32,22 +32,24 @@ class ListaAdjacenciaDirecionada:
 
     #Realiza a busca em largura (BFS)
     def busca_em_largura_direcionada(self):
-        print("entrou em busca de largura")
-        vertice_inicial = next(iter(self.listaAdjacenciaDirecionada))
         visitados = set()
+        print("lista adjacencia: " + str(self.listaAdjacenciaDirecionada))
+        vertice_inicial = next(iter(self.listaAdjacenciaDirecionada))
+        print("vertice inical: " + str(vertice_inicial))
         fila = deque([vertice_inicial])
+        resultados = []
 
         while fila:
             vertice = fila.popleft()
 
             if vertice not in visitados:
+                resultados.append(vertice)
                 visitados.add(vertice)
-                
+
                 vizinhos_ordenados = sorted(self.listaAdjacenciaDirecionada.get(vertice, []))
-                for vizinho in vizinhos_ordenados:
-                    if vizinho not in visitados:
-                        fila.append(vizinho)
-        return visitados
+                fila.extend(vizinhos_ordenados)
+
+        return resultados
 
     #Realiza a busca em profundidade (DFS)
     def dfs_visit(self, vertice, visitados):
@@ -82,3 +84,5 @@ class ListaAdjacenciaDirecionada:
             self.resultado_dfs[vertice] = [self.pre_visita[vertice], self.pos_visita[vertice]]
         
         return self.resultado_dfs
+    
+    

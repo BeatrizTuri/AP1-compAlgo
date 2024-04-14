@@ -55,24 +55,15 @@
                 </ul>
                 {% endif %}
             </div>
-            <!-- Aqui estão os novos botões -->
             <div>
-                <button onclick="funcaoBotaoUm()">Botão Um</button>
-                <button onclick="funcaoBotaoDois()">Botão Dois</button>
+                 <form action="/BuscaEmLarguraDirecionada" method="get">
+                    <button type="submit">BFS</button>
+                </form>
+                <form action="/BuscaEmProfundidadeDirecionada" method="get">
+                    <button type="submit">DFS</button>
+                </form>
             </div>
         </div>
     </div>
-    <script>
-        // Adicione aqui suas funções JavaScript para os botões, se necessário
-        function funcaoBotaoUm() {
-            // Lógica para o Botão Um
-            alert("Botão Um clicado!");
-        }
-        
-        function funcaoBotaoDois() {
-            // Lógica para o Botão Dois
-            alert("Botão Dois clicado!");
-        }
-    </script>
 </body>
 </html>

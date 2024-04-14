@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Algoritmos de Busca</title>
-    <link rel="stylesheet" href="/static/styleListaDirecionada.css">
+    <link rel="stylesheet" href="/static/styleListaNaoDirecionada.css">
 </head>
 <body>
 
@@ -26,8 +26,27 @@
     <div>
         <h2>Resultados</h2>
         <div id="resultadoOutput">
-            <p>{{ grafo }}</p>
-            <p>{{ subgrafo }}</p>
+            {% if grafo %}
+            <h3>Grafo:</h3>
+            <ul>
+                {% for key, value in grafo.items() %}
+                    <li>{{ key }}: {{ value }}</li>
+                {% endfor %}
+            </ul>
+            {% else %}
+            <p>Nenhum resultado encontrado para o grafo.</p>
+            {% endif %}
+            
+            {% if subgrafo %}
+            <h3>Subgrafo:</h3>
+            <ul>
+                {% for key, value in subgrafo.items() %}
+                    <li>{{ key }}: {{ value }}</li>
+                {% endfor %}
+            </ul>
+            {% else %}
+            <p>Nenhum resultado encontrado para o subgrafo.</p>
+            {% endif %}
         </div>
     </div>
 </div>
