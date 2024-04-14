@@ -1,4 +1,4 @@
-/* Estilos gerais para o corpo da página */
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -6,22 +6,22 @@ body {
     background-color: #f2f2f2;
 }
 
-/* Estilos para o cabeçalho */
+
 header {
-    background-color: #177e11; /* Cor verde */
+    background-color: #177e11; 
     color: white;
     padding: 20px;
     text-align: center;
 }
 
-/* Estilos para o conteúdo da mensagem */
+
 .container {
     width: 80%;
     margin: 0 auto;
     padding: 20px;
     background-color: white;
     border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
 }
 
 .header {
@@ -40,7 +40,7 @@ header {
 }
 
 .voltar-btn {
-    background-color: #177e11; /* Cor verde */
+    background-color: #177e11; 
     color: white;
     padding: 10px 20px;
     border: none;
@@ -50,5 +50,5 @@ header {
 }
 
 .voltar-btn:hover {
-    background-color: #45a049; /* Cor verde mais escura ao passar o mouse */
+    background-color: #45a049; 
 }

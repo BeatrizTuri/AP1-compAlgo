@@ -24,7 +24,7 @@ header h1 {
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   text-align: center;
-  position: relative; /* Adiciona posição relativa para container */
+  position: relative; 
 }
 
 label {
@@ -37,17 +37,17 @@ textarea {
   height: 10vh;
   padding: 10px;
   border-radius: 5px;
-  border: 1px solid #177e11; /* Cor verde utilizada na página */
+  border: 1px solid #177e11; 
   resize: vertical;
   box-sizing: border-box;
 }
 
 input[type="text"] {
-  width: 20%; /* Mesma largura que o textarea */
+  width: 20%; 
   height: 5%;
   padding: 5px;
   border-radius: 5px;
-  border: 1px solid #177e11; /* Cor verde utilizada na página */
+  border: 1px solid #177e11; 
   box-sizing: border-box;
 }
 
@@ -66,20 +66,20 @@ button:hover {
 }
 
 #botoesdebusca {
-  text-align: center; /* Alinha os botões no centro horizontalmente */
+  text-align: center; 
   justify-content: center;
   display: flex;
 }
 
 #botoesdebusca form {
-  display: inline-block; /* Permite que os botões fiquem lado a lado */
-  margin-right: 10px; /* Espaçamento entre os botões */
+  display: inline-block; 
+  margin-right: 10px; 
 }
 
 
 #botoesdebusca button { 
-  width: 100px; /* Ajuste a largura conforme necessário */
-  margin-right: 10px; /* Espaçamento entre os botões */
+  width: 100px; 
+  margin-right: 10px; 
   background-color: #177e11;
   color: #fff;
   padding: 10px;
@@ -94,9 +94,9 @@ button:hover {
   border: 1px solid #ccc;
   border-radius: 4px;
   border: 1px solid #177e11;
-  min-height: 200px; /* Defina a altura mínima desejada */
-  max-height: 400px; /* Defina a altura máxima desejada */
-  overflow-y: auto; /* Adiciona barra de rolagem vertical quando necessário */
+  min-height: 200px; 
+  max-height: 400px; 
+  overflow-y: auto; 
 }
 
 #listaOutput ul {
@@ -108,7 +108,7 @@ button:hover {
   margin-bottom: 5px;
 }
 
-/* Estilos para os novos botões */
+
 #listaOutput + div {
   margin-top: 20px;
 }
@@ -117,17 +117,17 @@ button:hover {
   margin-right: 10px;
 }
 
-/* Estilos para o botão de volta */
+
 #linkVoltar {
   position: absolute;
-  left: 20px; /* Ajusta a posição da seta para o canto esquerdo */
-  top: 20px; /* Ajusta a posição da seta para o topo */
+  left: 20px; 
+  top: 20px; 
   font-size: 24px;
   color: #fff;
   text-decoration: none;
-  transition: opacity 0.3s ease; /* Adiciona transição suave */
+  transition: opacity 0.3s ease; 
 }
 
 #linkVoltar:hover {
-  opacity: 0.8; /* Reduz a opacidade ao passar o mouse */
+  opacity: 0.8; 
 }
