@@ -16,7 +16,7 @@
     <div>
         <h2>Inserir Grafo Não Direcionado</h2>
         <form action="/insereListaNaoDirecionada" method="post">
-            <label for="grafoInput">Insira aqui o Grafo:</label><br>
+            <label for="grafoInput">Insira aqui o Grafo no formato:[("A", "B"), ("A", "E"),...]</label><br>
             <textarea id="grafoInput" name="grafoInput" rows="4" cols="50"></textarea><br>
             <button type="submit">Inserir grafo</button>
         </form>
@@ -25,7 +25,7 @@
     <div>
         <h2>Inserir Subgrafo Direcionado</h2>
         <form action="/insereSubgrafoNaoDirecionado" method="post">
-            <label for="subgrafoInput">Insira aqui o Subgrafo:</label><br>
+            <label for="subgrafoInput">Insira aqui o Subgrafo no formato:[("A", "B"), ("A", "E"),...]</label><br>
             <textarea id="subgrafoInput" name="subgrafoInput" rows="4" cols="50"></textarea><br>
             <label for="qtdInput">Quantidade:</label>
             <input type="text" id="qtdInput" name="qtdInput"><br>
@@ -60,9 +60,27 @@
             </ul>
             {% endif %}
         </div>
+        <!-- Novos botões adicionados -->
+        <div>
+            <button onclick="funcaoBotaoUm()">DFS</button>
+            <button onclick="funcaoBotaoDois()">BFS</button>
+        </div>
     </div>
     
 </div>
+
+<script>
+    // Adicione aqui suas funções JavaScript para os botões, se necessário
+    function funcaoBotaoUm() {
+        // Lógica para o Botão Um
+        alert("Botão Um clicado!");
+    }
+    
+    function funcaoBotaoDois() {
+        // Lógica para o Botão Dois
+        alert("Botão Dois clicado!");
+    }
+</script>
 
 </body>
 </html>
