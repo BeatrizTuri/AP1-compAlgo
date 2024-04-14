@@ -14,6 +14,39 @@ Engenharia da Computação
 Complexidade de Algoritimos 
 
 ## Instrução de compilação
+Para poder rodar o código, é preciso fazer o pip install das bibliotecas abaixo:
+
+ ```python
+ pip install flask
+ ```
+
+  ```python
+ pip install collections
+ ```
+Para a aplicação funcionar é preciso que você insira apenas uma vez cada tipo de grafo (direcionado ou não direcionado). Se quiser inserir outro grafo, reinicie o app.
+
+## Exemplo Grafo Não Direcionado com uma componente desconexa:
+
+No campo de inserir grafo: 
+
+  ```python
+ [("A", "B"), ("A", "E"), ("B", "C"), ("B", "E"), ("C", "F"), ("E", "F"), ("F", "I")]
+ ```
+
+No campo de inserir componente desconexa: 
+
+  ```python
+ [("D", "H"), ("D", "G"), ("G", "H")]
+ ```
+Obs: Colocar no campo de quantidade: 1
+
+## Exemplo Grafo Direcionado:
+
+No campo de inserir grafo: 
+
+  ```python
+ [("A", "B"), ("A", "F"), ("B", "C"), ("B", "E"), ("C", "D"), ("E", "D"), ("E", "G"), ("D", "H"), ("D", "B"), ("G", "F"), ("H", "G"), ("F", "G"), ("F", "E")]
+ ```
 
 ## Padrão de Commit
 Utilizamos tipos de commit para padronizar as mensagens de commit neste projeto. A seguir, estão os tipos de commit a serem utilizados, juntamente com exemplos de sumários correspondentes:
