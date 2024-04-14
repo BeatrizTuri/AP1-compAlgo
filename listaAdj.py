@@ -117,7 +117,7 @@ class ListaAdjacencia:
                 self.dfs_visit(vertice, visitados, arvore_dfs, contador)
 
         #Armazena o contador de pré-visita e pós-visita no formato desejado
-        for vertice in self.listaAdjacenciaDirecionada.keys():
+        for vertice in self.listaAdjacencia.keys():
             self.resultado_dfs[vertice] = [self.pre_visita[vertice], self.pos_visita[vertice]]
         
         #Retorna o resultado do DFS
