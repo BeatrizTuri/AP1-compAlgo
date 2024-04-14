@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Algoritmos de Busca</title>
+    <link rel="stylesheet" href="/static/styleListaDirecionadaBFS.css">
+</head>
+<body>
+<header>
+    <h1>Grafos Direcionados</h1>
+</header>
+<div class="container">
+    <div>
+        <h2>Resultado BFS</h2>
+        <div id="resultadoBFS">
+            {% if grafoBFS %}
+                <h3>Grafo:</h3>
+                <ul>
+                    {% for item in grafoBFS %}
+                        <li>{{ item }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+            {% if subgrafoBFS %}
+                <h3>Subgrafo:</h3>
+                <ul>
+                    {% for item in subgrafoBFS %}
+                        <li>{{ item }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+    </div>
+</div>
+</body>
+</html>

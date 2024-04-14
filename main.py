@@ -107,31 +107,43 @@ def buscaEmLarguraDirecionada():
     if sd.listaAdjacenciaDirecionada != {}:
         subgrafo = sd.busca_em_largura_direcionada()
     
-    return flask.render_template('algoritimoDirecionada.html', grafo=grafo, subgrafo=subgrafo)
+    return flask.render_template('algoritimoDirecionadaBFS.html', grafoBFS=grafo, subgrafoBFS=subgrafo)
 
 #Rotas para os algoritmos de busca DFS
 @app.route('/BuscaEmProfundidadeDirecionada', methods=['GET'])
 def buscaEmProfundidadeDirecionada():
-    grafo = lad.busca_em_profundidade_direcionada()
-    subgrafo = sd.busca_em_profundidade_direcionada()
+    grafo = {}
+    subgrafo = {}
+    if lad.listaAdjacenciaDirecionada != {}:
+        grafo = lad.busca_em_profundidade_direcionada()
+    if sd.listaAdjacenciaDirecionada != {}:
+        subgrafo = sd.busca_em_profundidade_direcionada()
     
-    return flask.render_template('algoritimoDirecionada.html', grafo=grafo, subgrafo=subgrafo)
+    return flask.render_template('algoritimoDirecionadaDFS.html', grafoDFS=grafo, subgrafoDFS=subgrafo)
 
 #Rotas para os algoritmos de busca BFS
 @app.route('/BuscaEmLargura', methods=['GET'])
-def buscaEmLargura():   
-    grafo = la.busca_em_largura()
-    subgrafo = s.busca_em_largura()
+def buscaEmLargura():  
+    grafo = {} 
+    subgrafo = {}
+    if la.listaAdjacencia != {}:
+        grafo = la.busca_em_largura()
+    if s.listaAdjacencia != {}:
+        subgrafo = s.busca_em_largura()
     
-    return flask.render_template('algoritimoNaoDirecionada.html', grafo=grafo, subgrafo=subgrafo)
+    return flask.render_template('algoritimoNaoDirecionadaBFS.html', grafoBFS=grafo, subgrafoBFS=subgrafo)
 
 #Rotas para os algoritmos de busca DFS
 @app.route('/BuscaEmProfundidade', methods=['GET'])
 def buscaEmProfundidade():
-    grafos = la.busca_em_profundidade()
-    subgrafo = s.busca_em_profundidade()
+    grafo = {}
+    subgrafo = {}
+    if la.listaAdjacencia != {}:
+        grafo = la.busca_em_profundidade()
+    if s.listaAdjacencia != {}:
+        subgrafo = s.busca_em_profundidade()
     
-    return flask.render_template('algoritimoNaoDirecionada.html', grafo=grafos, subgrafo=subgrafo)
+    return flask.render_template('algoritimoNaoDirecionadaDFS.html', grafoDFS=grafo, subgrafoDFS=subgrafo)
 
 if __name__ == "__main__":
     

@@ -33,9 +33,7 @@ class ListaAdjacenciaDirecionada:
     #Realiza a busca em largura (BFS)
     def busca_em_largura_direcionada(self):
         visitados = set()
-        print("lista adjacencia: " + str(self.listaAdjacenciaDirecionada))
         vertice_inicial = next(iter(self.listaAdjacenciaDirecionada))
-        print("vertice inical: " + str(vertice_inicial))
         fila = deque([vertice_inicial])
         resultados = []
 

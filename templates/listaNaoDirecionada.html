@@ -61,27 +61,15 @@
             </ul>
             {% endif %}
         </div>
-        <!-- Novos botões adicionados -->
-        <div id="botõesdebusca">
-            <button onclick="funcaoBotaoUm()">DFS</button>
-            <button onclick="funcaoBotaoDois()">BFS</button>
-        </div>
     </div>
-    
 </div>
-
-<script>
-    // Adicione aqui suas funções JavaScript para os botões, se necessário
-    function funcaoBotaoUm() {
-        // Lógica para o Botão Um
-        alert("Botão Um clicado!");
-    }
-    
-    function funcaoBotaoDois() {
-        // Lógica para o Botão Dois
-        alert("Botão Dois clicado!");
-    }
-</script>
-
+<div id="botoesdebusca">
+    <form action="/BuscaEmLargura" method="get">
+       <button type="submit">BFS</button>
+   </form>
+   <form action="/BuscaEmProfundidade" method="get">
+       <button type="submit">DFS</button>
+   </form>
+</div>
 </body>
 </html>
