@@ -9,6 +9,7 @@ class ListaAdjacenciaDirecionada:
         self.listaAdjacenciaDirecionada = {}
         self.pre_visita = {}
         self.pos_visita = {}
+        self.resultado_dfs = {}
         self.contador = 1
 
     def insere_listaAdjacenciaDirecionada(self, lista_de_pares):
@@ -40,7 +41,6 @@ class ListaAdjacenciaDirecionada:
             vertice = fila.popleft()
 
             if vertice not in visitados:
-                print(vertice, end=' ')
                 visitados.add(vertice)
                 
                 vizinhos_ordenados = sorted(self.listaAdjacenciaDirecionada.get(vertice, []))
@@ -72,13 +72,13 @@ class ListaAdjacenciaDirecionada:
     def busca_em_profundidade_direcionada(self):
         visitados = set()
         self.contador = 1
-
+        
         for vertice in self.listaAdjacenciaDirecionada.keys():
             if vertice not in visitados:
                 self.dfs_visit(vertice, visitados)
         
-        # Imprime os tempos de pré-visita e pós-visita no formato desejado
+        # armazena o contador de pré-visita e pós-visita no formato desejado
         for vertice in self.listaAdjacenciaDirecionada.keys():
-            print(f"{vertice} : ( {self.pre_visita[vertice]} , {self.pos_visita[vertice]} )")
-
-    
+            self.resultado_dfs[vertice] = [self.pre_visita[vertice], self.pos_visita[vertice]]
+        
+        return self.resultado_dfs
