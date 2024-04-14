@@ -94,24 +94,33 @@ def exibeListaNaoDirecionada():
 
     return flask.render_template('listaNaoDirecionada.html', grafo=grafo, subgrafo=subgrafo)
 
-
-
-# @app.route('/BuscaEmLarguraDirecionada')
-# def buscaEmLarguraDirecionada():
-#     return flask.render_template('buscaEmLarguraDirecionada.html')
-
-# @app.route('/BuscaEmLargura')
-# def buscaEmLargura():
-#     return flask.render_template('buscaEmLargura.html')
-
-# @app.route('/BuscaEmProfundidadeDirecionada')
-# def buscaEmProfundidadeDirecionada():
-#     return flask.render_template('buscaEmProfundidadeDirecionada.html')
-
-# @app.route('/BuscaEmProfundidade')
-# def buscaEmProfundidade():
-#     return flask.render_template('buscaEmProfundidade.html')
+@app.route('/BuscaEmLarguraDirecionada', methods=['GET'])
+def buscaEmLarguraDirecionada():
+    grafo = lad.busca_em_largura_direcionada()
+    subgrafo = sd.busca_em_largura_direcionada()
     
+    return flask.render_template('algoritimoDirecionada.html', grafo=grafo, subgrafo=subgrafo)
+
+@app.route('/BuscaEmProfundidadeDirecionada', methods=['GET'])
+def buscaEmProfundidadeDirecionada():
+    grafo = lad.busca_em_profundidade_direcionada()
+    subgrafo = sd.busca_em_profundidade_direcionada()
+    
+    return flask.render_template('algoritimoDirecionada.html', grafo=grafo, subgrafo=subgrafo)
+
+@app.route('/BuscaEmLargura', methods=['GET'])
+def buscaEmLargura():   
+    grafo = la.busca_em_largura()
+    subgrafo = s.busca_em_largura()
+    
+    return flask.render_template('algoritimoNaoDirecionada.html', grafo=grafo, subgrafo=subgrafo)
+
+@app.route('/BuscaEmProfundidade', methods=['GET'])
+def buscaEmProfundidade():
+    grafos = la.busca_em_profundidade()
+    subgrafo = s.busca_em_profundidade()
+    
+    return flask.render_template('algoritimoNaoDirecionada.html', grafo=grafos, subgrafo=subgrafo)
 
 if __name__ == "__main__":
     

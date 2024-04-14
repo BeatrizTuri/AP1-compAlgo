@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Algoritmos de Busca</title>
+    <link rel="stylesheet" href="/static/styleListaDirecionada.css">
+</head>
+<body>
+
+<header>
+    <h1>Grafos Direcionados</h1>
+</header>
+<div class="container">
+    <div>
+        <form action="/BuscaEmLarguraGrafo" method="get">
+            <button type="submit">BFS Grafo</button>
+        </form>
+    </div>
+    <div>
+        <form action="/BuscaEmProfundidadeGrafo" method="get">
+            <button type="submit">DFS Grafo</button>
+        </form>
+    </div>
+
+    <div>
+        <h2>Resultados</h2>
+        <div id="resultadoOutput">
+            <p>{{ resultado }}</p>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
